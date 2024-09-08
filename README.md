@@ -1,3 +1,5 @@
+# Server running on port - 4000
+# client runnin on port - 3000
 # Study Notion
 
 Study Notion is an ED Tech (Education Technology) web application developed using the MERN stack.
