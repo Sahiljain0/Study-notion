@@ -3,14 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
- "scripts": {
-  "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm run client\" \"npm run server\"",
-  "client": "vite",
-  "server": "cd server && npm run dev",
-  "build": "vite build",
-  "start": "vite"
-},
-
+  "scripts": {
+    "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm run client\" \"npm run server\"",
+    "client": "vite",
+    "server": "cd server && npm run dev",
+    "build": "vite build",
+    "start": "vite"
+  },
   "dependencies": {
     "@ramonak/react-progress-bar": "^5.2.0",
     "@reduxjs/toolkit": "^2.2.7",
