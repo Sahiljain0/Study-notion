@@ -1,6 +1,7 @@
 import React from "react";
 import HighLightText from "../core/HomePage/HighLightText";
 import CodeBlocks from "../core/HomePage/CodeBlocks";
+import ExploreMore from "./ExploreMore";
 const Section3 = () => {
  return (
     <>
@@ -82,6 +83,7 @@ const Section3 = () => {
           shadowColor={"shadow-2xl shadow-blue-400"}
         />
       </div>
+      <ExploreMore/>
     </>
  )
 }

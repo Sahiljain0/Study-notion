@@ -9,3 +9,19 @@ html, body {
 .homepage_bg{
     background: url("../src/assets/Images/bghome.svg");
 }
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px; /* Makes the scrollbar thinner */
+    cursor: pointer;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1e293b; /* Dark background for the scrollbar track */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: gray; /* Colorful gradient for the scrollbar */
+    border-radius: 10px;
+  }
+  
+ 
+  
