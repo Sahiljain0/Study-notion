@@ -6,10 +6,11 @@ import NavBar from "./components/common/NavBar";
 import OpenRoute from "./components/core/Auth/OpenRoute";
 import Login from "./pages/login";
 import Signup from "./pages/Signup";
+import  ForgotPassword  from "./pages/ForgotPassword";
 function App() {
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
-     <NavBar/>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
@@ -20,7 +21,7 @@ function App() {
             </OpenRoute>
           }
         />
-    <Route
+        <Route
           path="login"
           element={
             <OpenRoute>
@@ -28,7 +29,14 @@ function App() {
             </OpenRoute>
           }
         />
-
+         <Route
+          path="/forgot-password"
+          element={
+            <OpenRoute>
+              <ForgotPassword/>
+            </OpenRoute>
+          }
+        />
       </Routes>
     </div>
   );
