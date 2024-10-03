@@ -6,6 +6,8 @@ const app = express();
 const userRoutes = require("./routes/User");
 const paymentRoutes = require("./routes/Payment");
 const profileRoutes = require("./routes/Profile");
+const contactUsRoute = require("./routes/Contact");
+
 const courseRoutes = require("./routes/Course");
 const sectionRoutes = require("./routes/Section");
 const subsectionRoutes = require("./routes/SubSection");
@@ -58,6 +60,7 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/category",categoryRoutes);
 app.use("/api/v1/section",sectionRoutes);
 app.use("/api/v1/subsection",subsectionRoutes);
+app.use("/api/v1/reach", contactUsRoute);
 app.use("/api/v1/ratingandreview",ratingandreviewRoutes);
 
 // *************************************************************************
