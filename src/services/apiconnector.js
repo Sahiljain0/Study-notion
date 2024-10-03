@@ -1,13 +1,13 @@
-import React from 'react'
-import axios from 'axios'
+import axios from "axios"
 
 export const axiosInstance = axios.create({});
-export const apiConnector = (method, url, bodyData, header, params) => {
+
+export const apiConnector = (method, url, bodyData, headers, params) => {
     return axiosInstance({
-        method: `${method}`,
+        method:`${method}`,
         url:`${url}`,
-        bodyData: bodyData ? bodyData : null,
-        header : header ? header : null,
-        params : params ? params : null,
+        data: bodyData ? bodyData : null,
+        headers: headers ? headers: null,
+        params: params ? params : null,
     });
 }

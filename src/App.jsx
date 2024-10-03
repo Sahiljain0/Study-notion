@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router";
+import { Toaster } from 'react-hot-toast';
+
 import Home from "./pages/Home";
 import "./App.css";
 import NavBar from "./components/common/NavBar";
@@ -11,6 +13,7 @@ function App() {
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
       <NavBar />
+      <Toaster/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
@@ -30,7 +33,7 @@ function App() {
           }
         />
          <Route
-          path="/forgot-password"
+          path="forgot-password"
           element={
             <OpenRoute>
               <ForgotPassword/>
