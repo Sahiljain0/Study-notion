@@ -5,6 +5,7 @@ import { setUser } from "../../Redux/slices/profileSlice";
 import { apiConnector } from "../apiconnector"
 import { endpoints } from "../apis"
 
+
 const {
   SENDOTP_API,
   SIGNUP_API,
@@ -13,33 +14,33 @@ const {
   RESETPASSWORD_API,
 } = endpoints
 
-// export function sendOtp(email, navigate) {
-//   return async (dispatch) => {
-//     const toastId = toast.loading("Loading...")
-//     dispatch(setLoading(true))
-//     try {
-//       const response = await apiConnector("POST", SENDOTP_API, {
-//         email,
-//         checkUserPresent: true,
-//       })
-//       console.log("SENDOTP API RESPONSE............", response)
+export function sendOtp(email, navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading...")
+    dispatch(setLoading(true))
+    try {
+      const response = await apiConnector("POST", SENDOTP_API, {
+        email,
+        checkUserPresent: true,
+      })
+      console.log("SENDOTP API RESPONSE............", response)
 
-//       console.log(response.data.success)
+      console.log(response.data.success)
 
-//       if (!response.data.success) {
-//         throw new Error(response.data.message)
-//       }
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
 
-//       toast.success("OTP Sent Successfully")
-//       navigate("/verify-email")
-//     } catch (error) {
-//       console.log("SENDOTP API ERROR............", error)
-//       toast.error("Could Not Send OTP")
-//     }
-//     dispatch(setLoading(false))
-//     toast.dismiss(toastId)
-//   }
-// }
+      toast.success("OTP Sent Successfully")
+      navigate("/verify-email")
+    } catch (error) {
+      console.log("SENDOTP API ERROR............", error)
+      toast.error("Could Not Send OTP")
+    }
+    dispatch(setLoading(false))
+    toast.dismiss(toastId)
+  }
+}
 
 export function signUp(
   accountType,
@@ -149,5 +150,27 @@ export function getPasswordResetToken(email, setEmailSent){
      toast.error("Failed to send reset email link");
     }
     dispatch(setLoading(false));
+  }
+}
+
+export function resetPassword(password, confirmPassword, token, navigate){
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    try{
+      const response = await apiConnector("POST", RESETPASSWORD_API, {password, confirmPassword, token});
+      console.log("RESET password : " , response);
+
+      if(!response.data.success){
+        throw new Error(response.data.message);
+      }
+      toast.success("Password changed successfully");
+      
+    }
+    catch(error){
+       console.log("RESET password token error :", error);
+       toast.error("Unable to reset password");
+    }
+    dispatch(setLoading(false));
+    navigate("/login");
   }
 }
