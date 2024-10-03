@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
 import { BsChevronDown } from "react-icons/bs"
 import { useState, useEffect } from "react";
+import ProfileDropdown from "../core/Auth/ProfileDropDown";
 
 const NavBar = () => {
 
@@ -149,9 +150,9 @@ const NavBar = () => {
             )
            }
            {/* // when token is having some value show profile menu */}
-           {
-            token !== null && <ProfileDropDown/>
-           }
+           {/* {
+            token !== null && <ProfileDropdown/>
+           } */}
 
         </div>
       </div>
