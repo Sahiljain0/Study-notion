@@ -7,7 +7,7 @@ import Quote from '../components/core/AboutPage/Quote';
 import FoundingStory from "../assets/Images/FoundingStory.png"
 import StatsComponenet from '../components/core/AboutPage/StatsComponenet';
 import  LearningGrid  from '../components/core/AboutPage/LearningGrid';
-import { ContactFormSection } from '../components/core/AboutPage/ContactFormSection ';
+import  ContactFormSection  from '../components/core/AboutPage/ContactFormSection ';
 
  const About = () => {
   return (
