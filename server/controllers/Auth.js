@@ -157,7 +157,7 @@ exports.signup = async (req,res) => {
         contactNumber,
         additionalDetails:profileDetils._id,
         
-        image:`https://api.dicebear.co/.x/initials/svg?seed=${firstName} ${lastName}`
+        image:`https://api.dicebear.com/9.x/initials/svg?seed=${firstName} ${lastName}`
 
 
     });

@@ -9,6 +9,8 @@ import { FaCartPlus } from "react-icons/fa";
 import { BsChevronDown } from "react-icons/bs"
 import { useState, useEffect } from "react";
 import ProfileDropdown from "../core/Auth/ProfileDropDown";
+import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
+
 
 const NavBar = () => {
 
@@ -150,11 +152,12 @@ const NavBar = () => {
             )
            }
            {/* // when token is having some value show profile menu */}
-           {/* {
-            token !== null && <ProfileDropdown/>
-           } */}
+           {token !== null && <ProfileDropdown />}
 
         </div>
+        <button className="mr-4 md:hidden">
+          <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
+        </button>
       </div>
     </div>
   );
