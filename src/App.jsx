@@ -10,6 +10,7 @@ import Login from "./pages/login";
 import Signup from "./pages/Signup";
 import  ForgotPassword  from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
+import About from "./pages/About";
 function App() {
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
@@ -57,6 +58,14 @@ function App() {
             </OpenRoute>
           }
         />  
+         <Route
+          path="about"
+          element={
+            <OpenRoute>
+              <About />
+            </OpenRoute>
+          }
+        /> 
       </Routes>
     </div>
   );
