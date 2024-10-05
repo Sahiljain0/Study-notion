@@ -38,7 +38,7 @@ const ExploreMore = () => {
      
       {/* **************************************************** */}
   
-    <div className="flex rounded-full py-1 bg-richblack-800 font-semibold text-sm px-1 flex-row justify-center items-center gap-4">
+      <div className="hidden lg:flex gap-5 -mt-5 mx-auto w-max bg-richblack-800 text-richblack-200 p-1 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
         {tabsName.map((element, index) => {
           return (
             <div
@@ -58,10 +58,12 @@ const ExploreMore = () => {
           );
         })}
       </div>
+      <div className="hidden lg:block lg:h-[200px]"></div>
+
    {/* **************************************************************** */}
  
-   <div className='absolute top-48 flex gap-9 w-full justify-center  mt-5 flex-wrap lg:absolute right-0 left-0 mr-auto ml-auto'>
-        {
+   <div className="lg:absolute gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3">
+   {
             courses.map(  (element, index) => {
                 return (
                     <CourseCard 
