@@ -69,6 +69,8 @@ function App() {
           }
         /> 
             <Route path="/contact" element={<Contact />} />
+            <Route path="/dashboard/my-profile" element={<MyProfile/>} />
+
 
       </Routes>
     </div>
