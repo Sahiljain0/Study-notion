@@ -14,6 +14,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/core/Auth/PrivateRoute";
 function App() {
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
@@ -70,6 +71,14 @@ function App() {
           }
         /> 
             <Route path="/contact" element={<Contact />} />
+            <Route
+          path="about"
+          element={
+            <PrivateRoute>
+              <Dashboard/>
+            </PrivateRoute>
+          }
+        /> 
             <Route path="/dashboard/my-profile" element={<MyProfile/>} />
 
       </Routes>
