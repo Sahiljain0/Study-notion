@@ -18,7 +18,7 @@ const Section1 = () => {
        {/* Heading */}
        <div className="text-center text-4xl font-semibold">
           Empower Your Future with
-          <HighlightText text={"Coding Skills"} />
+          <HighLightText text={"Coding Skills"} />
         </div>
 
         {/* Sub Heading */}

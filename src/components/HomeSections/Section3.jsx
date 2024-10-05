@@ -12,7 +12,7 @@ const Section3 = () => {
             heading={
               <div className="text-4xl font-semibold">
                 Unlock your
-                <HighlightText text={"coding potential"} /> with our online
+                <HighLightText text={"coding potential"} /> with our online
                 courses.
               </div>
             }
@@ -42,7 +42,7 @@ const Section3 = () => {
             heading={
               <div className="w-[100%] text-4xl font-semibold lg:w-[50%]">
                 Start
-                <HighlightText text={"coding in seconds"} />
+                <HighLightText text={"coding in seconds"} />
               </div>
             }
             subheading={
