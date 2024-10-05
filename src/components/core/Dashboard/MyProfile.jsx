@@ -5,7 +5,7 @@ import IconBtn from '../../common/IconBtn';
 import { RiEditBoxLine } from "react-icons/ri"
 
 
- const MyProfile = () => {
+export default function MyProfile(){
     const {user} = useSelector((state) => state.profile);
     const navigate = useNavigate();
   return (
@@ -40,4 +40,3 @@ import { RiEditBoxLine } from "react-icons/ri"
       </>
   )
 }
-export default MyProfile;
