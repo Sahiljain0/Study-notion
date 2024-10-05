@@ -6,6 +6,7 @@ const {
     updateProfile,
     deleteAccount,
     getAllUserDetails,
+    updateDisplayPicture,
   } = require("../controllers/Profile");
 
 // *******************************DEFINING API ROUTES******************
@@ -13,6 +14,8 @@ const {
 router.put("/updateProfile", updateProfile);
 router.delete("/deleteAccount",deleteAccount);
 router.get("/getAllUserDetails",getAllUserDetails);
+router.get("/updateDisplayPicture",getAllUserDetails);
+
 
 // ***********************************************************************
 
