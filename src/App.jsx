@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Error from "./pages/Error";
 function App() {
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
@@ -80,6 +81,7 @@ function App() {
           }
         /> 
             <Route path="/dashboard/my-profile" element={<MyProfile/>} />
+            <Route path="*" element={<Error />} />
 
       </Routes>
     </div>
