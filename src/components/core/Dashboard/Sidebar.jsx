@@ -53,7 +53,7 @@ const Sidebar = () => {
               })
             }
 
-            className="px-8 py-2 text-md font-medium text-richblack-200"
+            className="px-8 py-2 text-sm font-medium text-richblack-200"
           >
             <div className="flex items-center gap-x-2"
             >
