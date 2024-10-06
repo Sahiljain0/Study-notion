@@ -59,6 +59,7 @@ const NavBar = () => {
               <li key={index}>
                 {link.title === "Catalog" ? (
                   <>
+                  
                     <div
                       className={`group relative flex cursor-pointer items-center gap-1 ${
                         matchRoute("/catalog/:catalogName")
