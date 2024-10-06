@@ -11,7 +11,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@ramonak/react-progress-bar": "^5.2.0",
+    "@ramonak/react-progress-bar": "^5.3.0",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",

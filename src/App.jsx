@@ -17,6 +17,7 @@ import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import Error from "./pages/Error";
 import Settings from "./components/core/Settings/Settings";
+import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 function App() {
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
@@ -83,7 +84,7 @@ function App() {
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/settings" element={<Settings/>} />
-
+          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
         </Route>
 
         <Route path="*" element={<Error />} />
