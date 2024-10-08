@@ -14,8 +14,8 @@ const CodeBlocks = ({
   backgroundGradient,
 }) => {
   return (
-    <div className={`flex ${position} gap-10 my-20 mx-10 justify-between`}>
-      {" "}
+    <div className={`flex ${position} gap-10 my-6 mx-10 justify-between`}>
+     
       {/* section 1 */}
       <div className="w-[50%] p-10 flex flex-col gap-8">
         {heading} 

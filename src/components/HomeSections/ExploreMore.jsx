@@ -27,7 +27,7 @@ const ExploreMore = () => {
     setCurrentCard(result[0].courses[0].heading);
   }
   return (
-    <div className="relative flex w-full px-20 flex-col  items-center mb-28 my-6 ">
+    <div className="relative flex w-full px-20 flex-col  items-center mb-28  ">
       <div className="text-4xl font-bold">
         Unlock the
         <HighLightText text={"Power of code"} />
