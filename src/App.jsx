@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router";
 import { Toaster } from "react-hot-toast";
 import VerifyEmail from "./pages/VerifyEmail";
+import Cart from "./components/core/Dashboard/Cart/Cart";
+import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import Home from "./pages/Home";
 import "./App.css";
 import NavBar from "./components/common/NavBar";
@@ -16,9 +18,13 @@ import MyProfile from "./components/core/Dashboard/MyProfile";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import Error from "./pages/Error";
+import { useSelector } from "react-redux";
 import Settings from "./components/core/Dashboard/Settings/Settings";
-import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
+import { ACCOUNT_TYPE } from "./utils/constants";
+
 function App() {
+  const { user } = useSelector((state) => state.profile)
+  
   return (
     <div className="w-screen min-h-screen flex flex-col bg-richblack-900 font-inter">
       <NavBar />
@@ -85,6 +91,15 @@ function App() {
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/settings" element={<Settings/>} />
           <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
+        
+          {
+        user?.accountType === ACCOUNT_TYPE.STUDENT && (
+          <>
+          <Route path="dashboard/cart" element={<Cart />} />
+          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+          </>
+        )
+      }
         </Route>
 
         <Route path="*" element={<Error />} />
