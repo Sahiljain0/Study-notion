@@ -6,7 +6,7 @@ const Section2 = () => {
  return (
     <>
       {/* Video */}
-      <div className="mx-3 my-7 shadow-[10px_-5px_50px_-5px] shadow-blue-200">
+      <div className="mx-3 my-7 lg:w-2/3 w-full shadow-[10px_-5px_50px_-5px] shadow-blue-200">
           <video
             className="shadow-[20px_20px_rgba(255,255,255)]"
             muted
