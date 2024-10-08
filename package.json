@@ -29,6 +29,7 @@
     "react-router": "^6.26.1",
     "react-router-dom": "^6.26.1",
     "react-scripts": "^3.0.1",
+    "react-stars": "^2.2.5",
     "react-super-responsive-table": "^6.0.0",
     "react-toastify": "^10.0.5",
     "react-top-loading-bar": "^2.3.1",
