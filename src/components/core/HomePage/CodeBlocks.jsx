@@ -33,10 +33,11 @@ const CodeBlocks = ({
           </CTAButton>
         </div>
       </div>
-      {/* section 2 */}
-      {/* // gradient shadow krna h  */}
-      <div className={`w-[50%] flex p-10 flex-row ${shadowColor}`}>
-        <div className="w-[10%] flx flex-col text-center text-richblack-400 font-bold font-inter">
+      {/* Section 2 */}
+      <div className="h-fit code-border rounded-3xl flex flex-row py-3 text-[10px] sm:text-sm leading-[18px] sm:leading-6 relative w-[100%] lg:w-[470px]">
+        {backgroundGradient}
+        {/* Indexing */}
+        <div className="text-center flex flex-col   w-[10%] select-none text-richblack-400 font-inter font-bold ">
           <p>1</p>
           <p>2</p>
           <p>3</p>
@@ -49,23 +50,22 @@ const CodeBlocks = ({
           <p>10</p>
           <p>11</p>
         </div>
-        <div className={`w-[90%] flex flex-col font-mono font-bold    pr-2 ${codeColor}`}>
-         <TypeAnimation
-          sequence={[codeblock, 2000, ""]}
-          repeat={Infinity}
-          cursor={true}        
-          style={
-            { 
-                whiteSpace:"pre-line",
-                display:"block"
-            }
-          } 
-         omitDeletionAnimation={true}
-         />
+
+        {/* Codes */}
+        <div
+          className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-1`}
+        >
+          <TypeAnimation
+            sequence={[codeblock, 1000, ""]}
+            cursor={true}
+            repeat={Infinity}
+            style={{
+              whiteSpace: "pre-line",
+              display: "block",
+            }}
+            omitDeletionAnimation={true}
+          />
         </div>
-
-
-
       </div>
     </div>
   );

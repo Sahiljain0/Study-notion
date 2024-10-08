@@ -5,8 +5,8 @@ import ExploreMore from "./ExploreMore";
 const Section3 = () => {
  return (
     <>
-      {/* Code Section 1  */}
-      <div>
+       {/* Code Section 1  */}
+       <div>
           <CodeBlocks
             position={"lg:flex-row"}
             heading={
@@ -20,13 +20,13 @@ const Section3 = () => {
               "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
             }
             ctabtn1={{
-              btnText: "Try it Yourself",
-              link: "/signup",
+              btntext: "Try it Yourself",
+              linkto: "/signup",
               active: true,
             }}
             ctabtn2={{
-              btnText: "Learn More",
-              link: "/signup",
+              btntext: "Learn More",
+              linkto: "/signup",
               active: false,
             }}
             codeColor={"text-yellow-25"}
@@ -49,13 +49,13 @@ const Section3 = () => {
               "Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."
             }
             ctabtn1={{
-              btnText: "Continue Lesson",
-              link: "/signup",
+              btntext: "Continue Lesson",
+              linkto: "/signup",
               active: true,
             }}
             ctabtn2={{
-              btnText: "Learn More",
-              link: "/signup",
+              btntext: "Learn More",
+              linkto: "/signup",
               active: false,
             }}
             codeColor={"text-white"}
