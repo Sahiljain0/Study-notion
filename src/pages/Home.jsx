@@ -12,10 +12,12 @@ import Footer from "../components/common/Footer";
 const Home = () => {
   return (
     <div className="relative mx-auto flex flex-col w-full items-center text-white justify-between">
-   
+          <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white">
+
       <Section1 />
       <Section2 />
       <Section3 />
+      </div>
       <Section4 />
       <TimeLineSection/>
       <LearningLanguageSection/>
