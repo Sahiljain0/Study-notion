@@ -1,148 +1,124 @@
+const { Mongoose } = require("mongoose");
 const Category = require("../models/Category");
-const User = require("../models/User");
-// create tag ka handler function //
-exports.createCategory = async (req,res) => {
-    try{
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max)
+  }
 
-        const userId = req.user.id;
-        const {name, description } = req.body;
-        
+exports.createCategory = async (req, res) => {
+	try {
+		const { name, description } = req.body;
+		if (!name) {
+			return res
+				.status(400)
+				.json({ success: false, message: "All fields are required" });
+		}
+		const CategorysDetails = await Category.create({
+			name: name,
+			description: description,
+		});
+		console.log(CategorysDetails);
+		return res.status(200).json({
+			success: true,
+			message: "Categorys Created Successfully",
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: true,
+			message: error.message,
+		});
+	}
+};
 
-        //validation //
-        if(!name ){
-            return res.status(401).json({
-                success:false,
-                message:"All details are required..."
-            });
-        }
-        //validate user if admin //
-        console.log("User id : ", userId);
-        const userDetails = await User.findById(userId,{
-            accountType:"Admin"
-        });
-        console.log("User details: ", userDetails);
-        if(!userDetails ){
-            return res.status(501).json({
-                success:false,
-                message:"User details not found...",
-            })
-           
-        };
-        // create entry in db //
-      
-        const categoryDetails = await Category.create({
-            name:name,
-            description:description
-        });
-        console.log(categoryDetails);
+exports.showAllCategories = async (req, res) => {
+	try {
+        console.log("INSIDE SHOW ALL CATEGORIES");
+		const allCategorys = await Category.find({});
+		res.status(200).json({
+			success: true,
+			data: allCategorys,
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: error.message,
+		});
+	}
+};
 
-        // return response //
-        return res.status(200).json({
-            success:true,
-            message:"category created successfully..."
-        });
-        
-    }
-    catch(error){
-        console.log(error);
-        return res.status(501).json({
-            success:false,
-            message:"Somthing went wrong...",
-        });
-    }
-}
+//categoryPageDetails 
 
-// ===================================================================
-
-
-// showAllCategories handler function //
-
-exports.showAllCategories = async (req,res) => {
-    try{
-        // find all categories  but make sure all should have name and description //
-      const allCategories = await Category.find({},{name:true, description:true}); 
-      return res.status(200).json({
-        success:true,
-        message:"all categories returned successfully...",
-        allCategories,
+exports.categoryPageDetails = async (req, res) => {
+    try {
+      const { categoryId } = req.body
+      console.log("PRINTING CATEGORY ID: ", categoryId);
+      // Get courses for the specified category
+      const selectedCategory = await Category.findById(categoryId)
+        .populate({
+          path: "courses",
+          match: { status: "Published" },
+          populate: "ratingAndReviews",
+        })
+        .exec()
+  
+      //console.log("SELECTED COURSE", selectedCategory)
+      // Handle the case when the category is not found
+      if (!selectedCategory) {
+        console.log("Category not found.")
+        return res
+          .status(404)
+          .json({ success: false, message: "Category not found" })
+      }
+      // Handle the case when there are no courses
+      if (selectedCategory.courses.length === 0) {
+        console.log("No courses found for the selected category.")
+        return res.status(404).json({
+          success: false,
+          message: "No courses found for the selected category.",
+        })
+      }
+  
+      // Get courses for other categories
+      const categoriesExceptSelected = await Category.find({
+        _id: { $ne: categoryId },
+      })
+      let differentCategory = await Category.findOne(
+        categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]
+          ._id
+      )
+        .populate({
+          path: "courses",
+          match: { status: "Published" },
+        })
+        .exec()
+        //console.log("Different COURSE", differentCategory)
+      // Get top-selling courses across all categories
+      const allCategories = await Category.find()
+        .populate({
+          path: "courses",
+          match: { status: "Published" },
+          populate: {
+            path: "instructor",
+        },
+        })
+        .exec()
+      const allCourses = allCategories.flatMap((category) => category.courses)
+      const mostSellingCourses = allCourses
+        .sort((a, b) => b.sold - a.sold)
+        .slice(0, 10)
+       // console.log("mostSellingCourses COURSE", mostSellingCourses)
+      res.status(200).json({
+        success: true,
+        data: {
+          selectedCategory,
+          differentCategory,
+          mostSellingCourses,
+        },
+      })
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error",
+        error: error.message,
       })
     }
-    catch(error){
-        console.log(error);
-        return res.status(501).json({
-            success:false,
-            message:"Something went wrong..."
-        });
-    }
-}
-
-// =================================================================
-// handler function to get category page details //
-
-exports.categoryPageDetails = async (req,res) => {
-    try{
-        // fetch data /
-        const { categoryId } = req.body;
-
-        // get all courses for the specific category // example caategory 
-        // python h to uske sbhi courses nikl do //
-
-        const selectedCategory =  await Category.findById({_id:categoryId})
-                                                                    .populate("courses")
-                                                                    .exec();
-        console.log(selectedCategory);
-
-        // handle the case when category is not found //
-        if(!selectedCategory){
-            return res.status(401).json({
-                success:false,
-                message:"Selected category not found...",
-            });
-        }
-
-        // handle the case when there is no course available in category//
-        if(!selectedCategory.courses.length === 0){
-            return res.status(401).json({
-                success:false,
-                message:"Course not found...",
-            });
-        }
-        // put all the avaiable courses to selected courses //
-        const selectedCourses = selectedCategory.courses;
-
-        // get courses of all othere categories //
-        const categoriesExceptSelected = await Category.find({
-            _id: { $ne: categoryId },
-
-        }).populate("courses");
-
-        let differentCourses = [];
-        for (const category of categoriesExceptSelected){
-            differentCourses.push(...category.courses);
-        }
-       
-
-
-
-        // get top selling courses among all catgoies //
-        const allCategories = await Category.find().populate("courses");
-        const allCourses = allCategories.flatMap((category) => category.courses);
-        const mostSellingCourses = allCourses
-                                    .sort((a,b) =>  b.sold - a.sold)
-                                    .slice(0,10);
-        // return response //
-        res.status(200).json({
-            selectedCourses: selectedCourses,
-            differentCourses: differentCourses,
-            mostSellingCourses: mostSellingCourses,
-            
-        });
-    }
-    catch(error){
-        return res.status(501).json({
-            success:false,
-            message:"Something went wrong...",
-            error:error.message,
-        });
-    }
-}
+  }
