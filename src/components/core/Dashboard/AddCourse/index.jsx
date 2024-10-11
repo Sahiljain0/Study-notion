@@ -9,7 +9,7 @@ export default function AddCourse() {
             Add Course
           </h1>
           <div className="flex-1">
-            <RenderSteps />
+           <RenderSteps/>
           </div>
         </div>
         {/* Course Upload Tips */}
