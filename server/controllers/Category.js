@@ -1,5 +1,4 @@
-const Category = require("../models/category");
-const Course = require("../models/Course");
+const Category = require("../models/Category");
 const User = require("../models/User");
 // create tag ka handler function //
 exports.createCategory = async (req,res) => {
