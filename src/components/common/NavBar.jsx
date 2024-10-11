@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
 import { BsChevronDown } from "react-icons/bs"
 import { useState, useEffect } from "react";
+import {apiConnector} from "../../services/apiconnector";
 import ProfileDropdown from "../core/Auth/ProfileDropDown";
 import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
 
