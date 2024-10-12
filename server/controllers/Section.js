@@ -133,6 +133,7 @@ exports.createSection = async (req, res) => {
 //   }
 // };
 
+// DELETE a section
 exports.deleteSection = async (req, res) => {
 	try {
 
@@ -178,7 +179,6 @@ exports.deleteSection = async (req, res) => {
 		});
 	}
 };   
-
 
 exports.updateSection = async (req, res) => {
 	try {
