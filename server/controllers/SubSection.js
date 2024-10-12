@@ -104,47 +104,41 @@ exports.updateSubSection = async (req, res) => {
 
 // =======================================================
 // handler function to delete a subsection //
+
 exports.deleteSubSection = async (req, res) => {
   try {
-    // fetch data from request ki body //
-    const { subSectionId ,sectionId} = req.body;
-    // const sectionId = req.body.sectionId;
-    console.log("Section id : ", sectionId);
-    console.log("body : ", req.body);
-    // validation//
-    if (!subSectionId ) {
-      return res.status(401).json({
-        success: false,
-        message: "Subsection id missing...",
-      });
+    const { subSectionId, sectionId } = req.body
+    await Section.findByIdAndUpdate(
+      { _id: sectionId },
+      {
+        $pull: {
+          subSection: subSectionId,
+        },
+      }
+    )
+    const subSection = await SubSection.findByIdAndDelete({ _id: subSectionId })
+
+    if (!subSection) {
+      return res
+        .status(404)
+        .json({ success: false, message: "SubSection not found" })
     }
 
-    // delet the subsection //
-    const deleteSubSection = await SubSection.findByIdAndDelete({
-      _id: subSectionId,
-    });
+    // find updated section and return it
+    const updatedSection = await Section.findById(sectionId).populate(
+      "subSection"
+    )
 
-    
-    // update section by deleting subscetion id //
-    if (!sectionId) {
-      return res.status(401).json({
-        success: false,
-        message: "section id missing...",
-      });}
-    await Section.findByIdAndUpdate({_id:sectionId},
-      {$pull:{subSection:subSectionId}},
-      {new:true}
-    );
-    console.log("Subsection removed from section...");
-    return res.status(200).json({
+    return res.json({
       success: true,
-      message: "SubScetion deleted successfully....",
-    });
+      message: "SubSection deleted successfully",
+      data: updatedSection,
+    })
   } catch (error) {
-    console.error(error);
-    return res.status(501).json({
+    console.error(error)
+    return res.status(500).json({
       success: false,
-      message: "something went wrong....",
-    });
+      message: "An error occurred while deleting the SubSection",
+    })
   }
-};
+}
