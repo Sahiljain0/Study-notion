@@ -83,6 +83,8 @@ function App() {
           }
         />
         <Route path="/contact" element={<Contact />} />
+
+        {/* Dashboard side routes added */}
         <Route
           element={
             <PrivateRoute>
@@ -114,6 +116,8 @@ function App() {
         )
       }
         </Route>
+
+        {/* error path route  */}
 
         <Route path="*" element={<Error />} />
       </Routes>
