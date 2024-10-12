@@ -53,39 +53,39 @@ exports.createSection = async (req, res) => {
 // =====================================================
 //handler function to update ta section //
 
-exports.updateSection = async (req, res) => {
-  try {
-    // fetch data from req ki body //
-    const { sectionName, sectionId } = req.body;
+// exports.updateSection = async (req, res) => {
+//   try {
+//     // fetch data from req ki body //
+//     const { sectionName, sectionId } = req.body;
 
-    // validation//
-    if (!sectionName || !sectionId) {
-      return res.status(401).json({
-        success: false,
-        message: "all details are required...",
-      });
-    }
+//     // validation//
+//     if (!sectionName || !sectionId) {
+//       return res.status(401).json({
+//         success: false,
+//         message: "all details are required...",
+//       });
+//     }
 
-    // updation //
-    const section = await Section.findByIdAndUpdate(
-      { _id: sectionId },
-      { sectionName },
-      { new: true }
-    );
+//     // updation //
+//     const section = await Section.findByIdAndUpdate(
+//       { _id: sectionId },
+//       { sectionName },
+//       { new: true }
+//     );
 
-    //return response //
-    return res.status(200).json({
-      success: true,
-      message: "Section updated successfully...",
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(501).json({
-      success: false,
-      message: "Something went wrong...",
-    });
-  }
-};
+//     //return response //
+//     return res.status(200).json({
+//       success: true,
+//       message: "Section updated successfully...",
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(501).json({
+//       success: false,
+//       message: "Something went wrong...",
+//     });
+//   }
+// };
 
 // ================================================
 // handler to delet a section //
@@ -178,3 +178,36 @@ exports.deleteSection = async (req, res) => {
 		});
 	}
 };   
+
+
+exports.updateSection = async (req, res) => {
+	try {
+		const { sectionName, sectionId,courseId } = req.body;
+		const section = await Section.findByIdAndUpdate(
+			sectionId,
+			{ sectionName },
+			{ new: true }
+		);
+
+		const course = await Course.findById(courseId)
+		.populate({
+			path:"courseContent",
+			populate:{
+				path:"subSection",
+			},
+		})
+		.exec();
+
+		res.status(200).json({
+			success: true,
+			message: section,
+			data:course,
+		});
+	} catch (error) {
+		console.error("Error updating section:", error);
+		res.status(500).json({
+			success: false,
+			message: "Internal server error",
+		});
+	}
+};

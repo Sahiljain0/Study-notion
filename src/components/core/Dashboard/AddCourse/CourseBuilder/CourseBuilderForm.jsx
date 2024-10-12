@@ -13,7 +13,7 @@ import {
   setCourse,
   setEditCourse,
   setStep,
-} from "../../../../../Redux/slices/courseSlice"
+} from "../../../../../Redux/slices/courseSlice";
 import IconBtn from "../../../../common/IconBtn"
 import NestedView from "./NestedView"
 
