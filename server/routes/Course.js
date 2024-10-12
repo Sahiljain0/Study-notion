@@ -35,14 +35,14 @@ const {
   createSubSection,
   updateSubSection,
   deleteSubSection,
-} = require("../controllers/Subsection")
+} = require("../controllers/SubSection")
 
 // // Rating Controllers Import
-// const {
-//   createRating,
-//   getAverageRating,
-//   getAllRating,
-// } = require("../controllers/RatingAndReview")
+const {
+  createRating,
+  getAverageRating,
+  getAllRating,
+} = require("../controllers/RatingAndReview");
 
 // const {
 //   updateCourseProgress
@@ -96,8 +96,8 @@ router.post("/getCategoryPageDetails", categoryPageDetails)
 // ********************************************************************************************************
 //                                      Rating and Review
 // ********************************************************************************************************
-// router.post("/createRating", auth, isStudent, createRating)
-// router.get("/getAverageRating", getAverageRating)
-// router.get("/getReviews", getAllRating)
+router.post("/createRating", auth, isStudent, createRating)
+router.get("/getAverageRating", getAverageRating)
+router.get("/getReviews", getAllRating)
 
 module.exports = router
