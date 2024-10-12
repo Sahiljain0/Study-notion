@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import image from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../data/navbar-links";
@@ -6,38 +6,36 @@ import { useLocation } from "react-router-dom";
 import { matchPath } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
-import { BsChevronDown } from "react-icons/bs"
+import { BsChevronDown } from "react-icons/bs";
 import { useState, useEffect } from "react";
-import {apiConnector} from "../../services/apiconnector";
-import ProfileDropdown from "../core/Auth/ProfileDropDown";
-import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
+import { categories } from "../../services/apis"
 
+import { apiConnector } from "../../services/apiconnector";
+import ProfileDropdown from "../core/Auth/ProfileDropDown";
+import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 
 const NavBar = () => {
-
   // fetching value of state from slices //
 
-  const {token} = useSelector((state) => state.auth);
-  const {user} = useSelector((state) => state.profile);
-  const {totalItems} = useSelector((state) => state.cart);
+  const { token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
+  const { totalItems } = useSelector((state) => state.cart);
 
-  const [subLinks, setSubLinks] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [subLinks, setSubLinks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    ;(async () => {
-      setLoading(true)
+    (async () => {
+      setLoading(true);
       try {
-        const res = await apiConnector("GET", categories.CATEGORIES_API)
-        setSubLinks(res.data.data)
+        const res = await apiConnector("GET", categories.CATEGORIES_API);
+        setSubLinks(res.data.data);
       } catch (error) {
-        console.log("Could not fetch Categories.", error)
+        console.log("Could not fetch Categories.", error);
       }
-      setLoading(false)
-    })()
-  }, [])
-
-
+      setLoading(false);
+    })();
+  }, []);
 
   // location //
   const location = useLocation();
@@ -60,7 +58,6 @@ const NavBar = () => {
               <li key={index}>
                 {link.title === "Catalog" ? (
                   <>
-                  
                     <div
                       className={`group relative flex cursor-pointer items-center gap-1 ${
                         matchRoute("/catalog/:catalogName")
@@ -74,7 +71,7 @@ const NavBar = () => {
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
-                        ) : (subLinks && subLinks.length) ? (
+                        ) : subLinks && subLinks.length ? (
                           <>
                             {subLinks
                               ?.filter(
@@ -117,45 +114,37 @@ const NavBar = () => {
           </ul>
         </nav>
 
-
         {/* ******************************************* */}
         {/* // login, signup, dashboard buttons // */}
         <div className="flex items-center  gap-x-6 text-white">
-           {
-            user && user?.accountType !== "Instructor" && (
-              <Link to="/dashboard/cart" className="relative">
-                <FaCartPlus  size={24} color="yellow"/>
-                {
-                  totalItems > 0 && (
-                    <span className="text-white bg-richblack-800 p-1 text-xs flex justify-center items-center font-medium rounded-full">
-                      {totalItems}
-                    </span>
-                  )
-                }
-              </Link>
-            )
-           }
+          {user && user?.accountType !== "Instructor" && (
+            <Link to="/dashboard/cart" className="relative">
+              <FaCartPlus size={24} color="yellow" />
+              {totalItems > 0 && (
+                <span className="text-white bg-richblack-800 p-1 text-xs flex justify-center items-center font-medium rounded-full">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+          )}
 
-           {/* // when token is null show login, signup buttons // */}
-           {
-            token === null && (
-              <Link to='/login'>
+          {/* // when token is null show login, signup buttons // */}
+          {token === null && (
+            <Link to="/login">
               <button className="bg-richblack-700  p-1 px-4 font-semibold text-richblack-200 rounded-md">
-                Login</button>
-              </Link>
-            )
-           }
-            {
-            token === null && (
-              <Link to='/signup'>
+                Login
+              </button>
+            </Link>
+          )}
+          {token === null && (
+            <Link to="/signup">
               <button className="bg-richblack-700 p-1 px-4 font-semibold text-richblack-200 rounded-md">
-              Signup</button>
-              </Link>
-            )
-           }
-           {/* // when token is having some value show profile menu */}
-           {token !== null && <ProfileDropdown />}
-
+                Signup
+              </button>
+            </Link>
+          )}
+          {/* // when token is having some value show profile menu */}
+          {token !== null && <ProfileDropdown />}
         </div>
         <button className="mr-4 md:hidden">
           <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
