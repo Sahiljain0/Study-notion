@@ -115,10 +115,10 @@ function Navbar() {
           </ul>
         </nav>
         {/* Login / Signup / Dashboard */}
-        <div className="hidden items-center gap-x-4 md:flex">
+        <div className="hidden items-center gap-x-6 md:flex mr-4">
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+              <AiOutlineShoppingCart className="text-2xl  text-richblack-100" />
               {totalItems > 0 && (
                 <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
                   {totalItems}
@@ -128,14 +128,14 @@ function Navbar() {
           )}
           {token === null && (
             <Link to="/login">
-              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[14px] py-[5px] text-richblack-100">
                 Log in
               </button>
             </Link>
           )}
           {token === null && (
             <Link to="/signup">
-              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[14px] py-[5px] text-richblack-100">
                 Sign up
               </button>
             </Link>
@@ -214,9 +214,9 @@ function Navbar() {
           ))}
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+              <AiOutlineShoppingCart className="text-2xl  text-richblack-100" />
               {totalItems > 0 && (
-                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                <span className="absolute  animate-bounce transition-all  ease-in-out  -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
                   {totalItems}
                 </span>
               )}
