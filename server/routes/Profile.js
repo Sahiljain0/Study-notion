@@ -36,7 +36,9 @@ const {
   updateDisplayPicture,
   getEnrolledCourses,
   instructorDashboard,
+
 } = require("../controllers/Profile")
+const { purchaseWithWallet } = require('../controllers/Profile'); // Adjust the path
 
 // ********************************************************************************************************
 //                                      Profile routes
@@ -49,5 +51,6 @@ router.get("/getUserDetails", auth, getAllUserDetails)
 router.get("/getEnrolledCourses", auth, getEnrolledCourses)
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
 router.get("/instructorDashboard", auth, isInstructor, instructorDashboard)
+router.post("/purchaseWithWallet", purchaseWithWallet);
 
 module.exports = router;

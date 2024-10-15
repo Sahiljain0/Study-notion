@@ -11,6 +11,7 @@ import { categories } from "../../services/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
 import ProfileDropdown from "../core/Auth/ProfileDropdown";
 import { BottomNavigation } from "@mui/material";
+import WalletModal from "./WalletModal";
 
 function Navbar() {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -21,6 +22,14 @@ function Navbar() {
 
   const [subLinks, setSubLinks] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const [isWalletOpen, setIsWalletOpen] = useState(false);
+  const handleWalletModal = () => {
+    setIsWalletOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsWalletOpen(false);
+  };
 
   useEffect(() => {
     (async () => {
@@ -116,6 +125,24 @@ function Navbar() {
         </nav>
         {/* Login / Signup / Dashboard */}
         <div className="hidden items-center gap-x-6 md:flex mr-4">
+          {user && user.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <button
+                onClick={handleWalletModal}
+                className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[14px] py-[5px] text-richblack-100 hover:bg-richblack-700 transition duration-200"
+                aria-label="Open Wallet Modal"
+              >
+                ${user.wallet}
+              </button>
+
+              <WalletModal
+                isOpen={isWalletOpen}
+                onClose={handleCloseModal}
+                walletBalance={user.wallet}
+              />
+            </>
+          )}
+
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
               <AiOutlineShoppingCart className="text-2xl  text-richblack-100" />
