@@ -97,25 +97,25 @@ exports.deleteAccount = async (req, res) => {
   }
 }
 
-exports.getAllUserDetails = async (req, res) => {
-  try {
-    const id = req.user.id
-    const userDetails = await User.findById(id)
-      .populate("additionalDetails")
-      .exec()
-    console.log(userDetails)
-    res.status(200).json({
-      success: true,
-      message: "User Data fetched successfully",
-      data: userDetails,
-    })
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    })
-  }
-}
+// exports.getAllUserDetails = async (req, res) => {
+//   try {
+//     const id = req.user.id
+//     const userDetails = await User.findById(id)
+//       .populate("additionalDetails")
+//       .exec()
+//     console.log(userDetails)
+//     res.status(200).json({
+//       success: true,
+//       message: "User Data fetched successfully",
+//       data: userDetails,
+//     })
+//   } catch (error) {
+//     return res.status(500).json({
+//       success: false,
+//       message: error.message,
+//     })
+//   }
+// }
 
 exports.updateDisplayPicture = async (req, res) => {
   try {
@@ -239,3 +239,132 @@ exports.instructorDashboard = async (req, res) => {
     res.status(500).json({ message: "Server Error" })
   }
 }
+
+exports.getAllUserDetails = async (req, res) => {
+  try {
+    const id = req.user.id; // Assuming you are using a middleware to get the user ID from the request
+    const userDetails = await User.findById(id)
+      .populate("additionalDetails")
+      .exec();
+
+    console.log(userDetails);
+    
+    // Check if userDetails is found
+    if (!userDetails) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "User data fetched successfully",
+      data: {
+        firstName: userDetails.firstName,
+        lastName: userDetails.lastName,
+        email: userDetails.email,
+        accountType: userDetails.accountType,
+        wallet: userDetails.wallet, // Include wallet balance in the response
+        additionalDetails: userDetails.additionalDetails,
+        image: userDetails.image,
+        courses: userDetails.courses,
+        courseProgress: userDetails.courseProgress,
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+ 
+
+// profile.js
+
+
+
+
+
+exports.purchaseWithWallet = async (req, res) => {
+  try {
+    const { userId, purchaseAmount, courseId } = req.body;
+
+    // Logging request body to confirm all fields are received correctly
+    console.log("Request Body:", req.body);
+
+    // Check if required fields are provided
+    if (!userId || !purchaseAmount || !courseId) {
+      return res.status(400).json({ success: false, message: "Missing required fields" });
+    }
+
+    // Fetch the user based on the ID
+    const user = await User.findById(userId);
+
+    // Check if the user exists and is a student
+    if (!user || user.accountType !== "Student") {
+      return res.status(400).json({ success: false, message: "Invalid user or not a student" });
+    }
+
+    // Check if user has sufficient balance in wallet
+    if (user.wallet < purchaseAmount) {
+      return res.status(400).json({ success: false, message: "Insufficient wallet balance" });
+    }
+
+    // Find the course by its ID
+    const course = await Course.findById(courseId);
+
+    // If the course is not found, return an error
+    if (!course) {
+      return res.status(400).json({ success: false, message: "Could not find the Course" });
+    }
+
+    // Check if the user is already enrolled in the course
+    if (course.studentsEnrolled.includes(userId)) {
+      return res.status(401).json({ success: false, message: "Student is already enrolled in this course" });
+    }
+
+    // Verify if the purchase amount matches the course price
+    if (purchaseAmount !== course.price) {
+      return res.status(400).json({ success: false, message: "Purchase amount does not match the course price" });
+    }
+
+    // Deduct the purchase amount from the wallet
+    user.wallet -= purchaseAmount;
+
+    // Create initial course progress for the user
+    const courseProgress = await CourseProgress.create({
+      userId: user._id,
+      courseId: course._id,
+      progress: 0 // Initialize the progress to 0 or any starting value
+    });
+
+    // Update the user's courses and course progress
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        $push: {
+          courses: courseId,
+          courseProgress: courseProgress._id
+        },
+        wallet: user.wallet 
+      },
+      { new: true }
+    );
+
+    // Enroll the user in the course on the course side as well
+    course.studentsEnrolled.push(userId);
+    await course.save();
+
+    // Return success response with the updated wallet balance
+    return res.status(200).json({
+      success: true,
+      message: "Purchase successful",
+      updatedWalletBalance: updatedUser.wallet
+    });
+  } catch (error) {
+    console.error("Error processing wallet purchase:", error);
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
