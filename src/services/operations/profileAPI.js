@@ -184,7 +184,9 @@ export function purchaseWithWallet(token, purchaseAmount, courseId) {
       // Extract the updated wallet balance from the response
       const updatedWalletBalance = response.data.updatedWalletBalance;
       dispatch(updateUserWallet(updatedWalletBalance));
-
+        // Play the notification sound
+        const notificationSound = document.getElementById("notificationSound");
+        notificationSound.play();
       // Update the toast with a success message
       toast.success("Purchase successful!");
     } catch (error) {
