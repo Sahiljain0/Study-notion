@@ -145,7 +145,7 @@ export async function getInstructorData(token) {
 // }
 // }
 // Frontend API call function
-export function purchaseWithWallet(token, purchaseAmount, courseId) {
+export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
   return async (dispatch) => {
     // Show a loading toast message
     const toastId = toast.loading("Processing purchase...");
@@ -167,6 +167,7 @@ export function purchaseWithWallet(token, purchaseAmount, courseId) {
           userId: token.userId,
           purchaseAmount,
           courseId,
+          
         },
         {
           Authorization: `Bearer ${token.accessToken}`,
@@ -189,6 +190,7 @@ export function purchaseWithWallet(token, purchaseAmount, courseId) {
         notificationSound.play();
       // Update the toast with a success message
       toast.success("Purchase successful!");
+      navigate("dashboard/my-courses");
     } catch (error) {
       console.error("Error during purchase:", error);
 
