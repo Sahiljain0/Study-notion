@@ -143,6 +143,7 @@ export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
       const notificationSound = document.getElementById("notificationSound");
       notificationSound.play();
       // Update the toast with a success message
+     
       toast.success("Purchase successful!");
        // Fire confetti
     confetti({
