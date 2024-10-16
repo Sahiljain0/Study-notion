@@ -175,6 +175,23 @@ function Navbar() {
             color="white"
             fontSize={24}
           /> */}
+            {user && user.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <button
+                onClick={handleWalletModal}
+                className="rounded-[8px] border  border-richblack-700 bg-richblack-800 py-[2px] px-[14px] md:py-[5px] text-richblack-100 hover:bg-richblack-700 transition duration-200"
+                aria-label="Open Wallet Modal"
+              >
+                ${user.wallet}
+              </button>
+
+              <WalletModal
+                isOpen={isWalletOpen}
+                onClose={handleCloseModal}
+                walletBalance={user.wallet}
+              />
+            </>
+          )}
           <div>
            {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
