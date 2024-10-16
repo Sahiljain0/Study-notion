@@ -16,14 +16,15 @@ export const profileEndpoints = {
   GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
   GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
   GET_WALLET_DATA : BASE_URL + "/profile/purchaseWithWallet",
+  BUY_COURSES : BASE_URL + "/profile/buyCourse",
 }
 
-// STUDENTS ENDPOINTS
-export const studentEndpoints = {
-  COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
-  COURSE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
-  SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
-}
+// // STUDENTS ENDPOINTS
+// export const studentEndpoints = {
+//   COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+//   COURSE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
+//   SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
+// }
 
 // COURSE ENDPOINTS
 export const courseEndpoints = {

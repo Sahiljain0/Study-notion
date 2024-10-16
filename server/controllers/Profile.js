@@ -368,3 +368,93 @@ exports.purchaseWithWallet = async (req, res) => {
     return res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
+
+exports.buyCourse = async (req, res) => {
+  try {
+    const { userId, purchaseAmount, courseIds } = req.body;
+
+    // Logging request body to confirm all fields are received correctly
+    console.log("Request Body:", req.body);
+    console.log("user id : ", userId);
+    console.log("purchase amount : ", purchaseAmount);
+  console.log("course ids : ", courseIds);
+    // Check if required fields are provided
+    if (!userId || !purchaseAmount || !courseIds || !Array.isArray(courseIds)) {
+      return res.status(400).json({ success: false, message: "yaha h error bhai" });
+    }
+
+    // Fetch the user based on the ID
+    const user = await User.findById(userId);
+    
+    // Check if the user exists and is a student
+    if (!user || user.accountType !== "Student") {
+      return res.status(400).json({ success: false, message: "Invalid user or not a student" });
+    }
+
+    // Check if user has sufficient balance in wallet
+    if (user.wallet < purchaseAmount) {
+      return res.status(400).json({ success: false, message: "Insufficient wallet balance" });
+    }
+
+    // Validate and enroll in each course
+    const enrolledCourses = [];
+    const courseProgressPromises = []; // To hold promises for creating course progress
+
+    // Fetch all courses in parallel to improve performance
+    const courses = await Course.find({ _id: { $in: courseIds } });
+
+    // Validate course existence and enroll
+    for (const course of courses) {
+      if (!course) {
+        return res.status(400).json({ success: false, message: `Could not find the Course with ID: ${course._id}` });
+      }
+
+      // Check if the user is already enrolled in the course
+      if (course.studentsEnrolled.includes(userId)) {
+        return res.status(401).json({ success: false, message: `Student is already enrolled in the course with ID: ${course._id}` });
+      }
+
+      // Deduct the purchase amount from the wallet
+      user.wallet -= course.price; // Deduct full course price
+
+      // Create initial course progress for the user
+      const courseProgress = await CourseProgress.create({
+        userId: user._id,
+        courseId: course._id,
+        progress: 0 // Initialize the progress to 0
+      });
+
+      // Enroll the user in the course on the course side as well
+      course.studentsEnrolled.push(userId);
+      await course.save();
+
+      // Push course ID and progress ID to arrays for later processing
+      enrolledCourses.push(course._id);
+      courseProgressPromises.push(courseProgress._id);
+    }
+
+    // Update the user's courses and course progress in a single update
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        $push: {
+          courses: { $each: enrolledCourses },
+          courseProgress: { $each: courseProgressPromises }
+        },
+        wallet: user.wallet 
+      },
+      { new: true }
+    );
+
+    // Return success response with the updated wallet balance
+    return res.status(200).json({
+      success: true,
+      message: "Purchase successful",
+      updatedWalletBalance: updatedUser.wallet
+    });
+  } catch (error) {
+    console.error("Error processing wallet purchase for multiple courses:", error);
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
