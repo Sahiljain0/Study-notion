@@ -1,27 +1,18 @@
 
 import React from "react";
 import { SwipeableButton } from "react-swipeable-button";
-import confetti from "canvas-confetti"; // Importing the canvas-confetti library
 import { FaTimes } from "react-icons/fa"; // Importing a cancel icon from react-icons
 
 const PaymentModal = ({ isOpen, onClose, coursePrice, onPayWithWallet }) => {
   if (!isOpen) return null;
 
-  const successSound = new Audio('/images/notificationSound');
 
   const onSuccess = () => {
     onPayWithWallet(); // Call your payment function
-    console.log("Successfully Swiped!");
+   
+    
 
-    // Play the success sound
-    successSound.play();
-
-    // Fire confetti
-    confetti({
-      particleCount: 100, // Number of confetti particles
-      spread: 70, // Spread angle
-      origin: { y: 0.6 }, // Starting position for confetti
-    });
+   
   };
 
   return (
@@ -41,8 +32,7 @@ const PaymentModal = ({ isOpen, onClose, coursePrice, onPayWithWallet }) => {
           <SwipeableButton
             onSuccess={onSuccess} // Callback function on success
             text="Swipe to Pay" // Display text on the button
-            text_unlocked="Payment Successful!" // Text after swiping
-            color="#16362d" // Button color
+          
             unlockedColor="#28a745" // Color when unlocked (optional)
           />
         </div>

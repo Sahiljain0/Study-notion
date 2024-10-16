@@ -1,4 +1,6 @@
 import { toast } from "react-hot-toast";
+import { resetCart } from "../../Redux/slices/cartSlice";
+import confetti from "canvas-confetti"; // Importing the canvas-confetti library
 
 // import { setLoading, setUser } from "../../Redux/slices/profileSlice";
 import {
@@ -16,7 +18,9 @@ const {
   GET_USER_ENROLLED_COURSES_API,
   GET_INSTRUCTOR_DATA_API,
   GET_WALLET_DATA,
+  BUY_COURSES,
 } = profileEndpoints;
+const successSound = new Audio('/images/notificationSound');
 
 export function getUserDetails(token, navigate) {
   return async (dispatch) => {
@@ -94,57 +98,8 @@ export async function getInstructorData(token) {
   return result;
 }
 
-// // Frontend API call function
-// export function purchaseWithWallet(token, purchaseAmount, courseId) {
-//   return async (dispatch) => {
-//     const toastId = toast.loading("Processing purchase...");
-//     dispatch(setLoading(true));
 
-//     if (!token || !purchaseAmount || !courseId) {
-//       toast.error("Missing required fields");
-//       dispatch(setLoading(false));
-//       toast.dismiss(toastId);
-//       return;
-//     }
 
-//     try {
-//       const response = await apiConnector(
-//         "POST",
-//         GET_WALLET_DATA,
-//         {
-//           userId: token.userId,
-//           purchaseAmount,
-//           courseId,
-//         },
-//         {
-//           Authorization: `Bearer ${token.accessToken}`,
-//         }
-//       );
-//       console.log("course : ", courseId);
-//       console.log("PURCHASE_WITH_WALLET API RESPONSE:", response.data);
-
-//       if (!response.data.success) {
-//         throw new Error(response.data.message);
-//       }
-
-//       const updatedWalletBalance = response.data.updatedWalletBalance;
-//       dispatch(updateUserWallet(updatedWalletBalance));
-//       toast.success("Purchase successful!");
-//     }
-//     catch (error) {
-//       // Check if the error response contains a message from the backend
-//       if (error.response && error.response.data && error.response.data.message) {
-//         const errorMessage = error.response.data.message;
-//         toast.error(errorMessage); // Show the backend error message as a toast
-//       } else {
-//         // Fallback error message if something else went wrong
-//         toast.error("An unexpected error occurred. Please try again later.");
-//       }
-//     };
-  
-// }
-// }
-// Frontend API call function
 export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
   return async (dispatch) => {
     // Show a loading toast message
@@ -167,7 +122,6 @@ export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
           userId: token.userId,
           purchaseAmount,
           courseId,
-          
         },
         {
           Authorization: `Bearer ${token.accessToken}`,
@@ -185,11 +139,17 @@ export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
       // Extract the updated wallet balance from the response
       const updatedWalletBalance = response.data.updatedWalletBalance;
       dispatch(updateUserWallet(updatedWalletBalance));
-        // Play the notification sound
-        const notificationSound = document.getElementById("notificationSound");
-        notificationSound.play();
+      // Play the notification sound
+      const notificationSound = document.getElementById("notificationSound");
+      notificationSound.play();
       // Update the toast with a success message
       toast.success("Purchase successful!");
+       // Fire confetti
+    confetti({
+      particleCount: 100, // Number of confetti particles
+      spread: 70, // Spread angle
+      origin: { y: 0.6 }, // Starting position for confetti
+    });
       navigate("dashboard/my-courses");
     } catch (error) {
       console.error("Error during purchase:", error);
@@ -198,7 +158,11 @@ export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
       toast.dismiss(toastId);
 
       // Check if the error response contains a message from the backend
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         const errorMessage = error.response.data.message;
         toast.error(errorMessage); // Show the backend error message as a toast
       } else {
@@ -207,6 +171,80 @@ export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
       }
     } finally {
       // Ensure the loading state is reset regardless of success or failure
+      dispatch(setLoading(false));
+      toast.dismiss(toastId);
+    }
+  };
+}
+
+export function buyCourses(token, courses, navigate) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Processing purchase...");
+    dispatch(setLoading(true));
+
+    if (!token || !courses || courses.length === 0) {
+      toast.error("Missing required fields here");
+      dispatch(setLoading(false));
+      toast.dismiss(toastId);
+      return;
+    }
+
+    try {
+      const purchaseAmount = courses.reduce(
+        (total, course) => total + course.price,
+        0
+      );
+      const courseIds = courses.map((course) => course.id);
+      console.log("courseid is : ", courseIds);
+      console.log("token is : ", token.userId);
+      const response = await apiConnector(
+        "POST",
+        BUY_COURSES,
+        {
+          userId: token.userId,
+          purchaseAmount,
+          courseIds,
+        },
+        {
+          Authorization: `Bearer ${token.accessToken}`,
+        }
+      );
+
+      console.log("PURCHASE_WITH_WALLET API RESPONSE:", response.data);
+
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      const updatedWalletBalance = response.data.updatedWalletBalance;
+      dispatch(updateUserWallet(updatedWalletBalance));
+
+      const notificationSound = document.getElementById("notificationSound");
+      notificationSound.play();
+
+      dispatch(resetCart());
+      toast.success("Purchase successful!");
+       // Fire confetti
+    confetti({
+      particleCount: 100, // Number of confetti particles
+      spread: 70, // Spread angle
+      origin: { y: 0.6 }, // Starting position for confetti
+    });
+      navigate("dashboard/my-courses");
+    } catch (error) {
+      console.error("Error during purchase:", error);
+      toast.dismiss(toastId);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        const errorMessage = error.response.data.message;
+        toast.error(errorMessage);
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
+    } finally {
       dispatch(setLoading(false));
       toast.dismiss(toastId);
     }

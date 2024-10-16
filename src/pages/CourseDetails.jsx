@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
@@ -18,6 +17,7 @@ import { fetchCourseDetails } from "../services/operations/courseDetailsAPI";
 import { purchaseWithWallet } from "../services/operations/profileAPI";
 import GetAvgRating from "../utils/avgRating";
 import Error from "./Error";
+import {addToCart, removeFromCart} from "../Redux/slices/cartSlice";
 
 function CourseDetails() {
   const { user } = useSelector((state) => state.profile);
@@ -32,6 +32,8 @@ function CourseDetails() {
   const [response, setResponse] = useState(null);
   const [confirmationModal, setConfirmationModal] = useState(null);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+
+
 
   useEffect(() => {
     (async () => {
@@ -115,18 +117,16 @@ function CourseDetails() {
   const handlePayWithWallet = async () => {
     if (user) {
       const token = {
-        userId: user._id,           // Get user ID from the user object
-        accessToken: user.token,    // Get access token from the user object
+        userId: user._id, // Get user ID from the user object
+        accessToken: user.token, // Get access token from the user object
         courseId,
-        
       };
 
       console.log("Token:", token); // Debugging - Check if token object is structured correctly
 
       try {
-        await dispatch(purchaseWithWallet(token, price, courseId, navigate)); // Make sure to await dispatch
+        dispatch(purchaseWithWallet(token, price, courseId, navigate)); // Make sure to await dispatch
         setIsPaymentModalOpen(false);
-        toast.success("Purchase successful!");
       } catch (error) {
         console.error("Error processing payment:", error);
         toast.error("Payment failed. Please try again.");
@@ -136,7 +136,6 @@ function CourseDetails() {
       toast.error("User information is missing. Please log in again.");
     }
   };
-
 
   if (paymentLoading) {
     return (
@@ -193,7 +192,9 @@ function CourseDetails() {
               <button className="yellowButton" onClick={handleBuyCourse}>
                 Buy Now
               </button>
-              <button className="blackButton">Add to Cart</button>
+                <button className="blackButton" >
+                 Add to cart
+              </button>
             </div>
           </div>
           <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute lg:block">
