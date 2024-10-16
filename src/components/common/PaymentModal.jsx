@@ -2,20 +2,19 @@
 import React from "react";
 import { SwipeableButton } from "react-swipeable-button";
 import confetti from "canvas-confetti"; // Importing the canvas-confetti library
+import { FaTimes } from "react-icons/fa"; // Importing a cancel icon from react-icons
 
 const PaymentModal = ({ isOpen, onClose, coursePrice, onPayWithWallet }) => {
   if (!isOpen) return null;
 
-  const successSound = new Audio('/images/notificationSound'); 
+  const successSound = new Audio('/images/notificationSound');
 
   const onSuccess = () => {
     onPayWithWallet(); // Call your payment function
     console.log("Successfully Swiped!");
-    
+
     // Play the success sound
-    successSound.play().catch(error => {
-      console.error("Error playing sound:", error);
-    });
+    successSound.play();
 
     // Fire confetti
     confetti({
@@ -27,7 +26,14 @@ const PaymentModal = ({ isOpen, onClose, coursePrice, onPayWithWallet }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg p-6 max-w-sm w-full">
+      <div className="bg-white rounded-lg p-6 max-w-sm w-full relative"> {/* Added relative positioning */}
+        <button
+          className="absolute top-3 right-3 text-gray-600 hover:text-gray-900" // Style for the cancel icon
+          onClick={onClose}
+          aria-label="Close"
+        >
+          <FaTimes size={20} className="text-yellow-200"/> {/* Render the cancel icon */}
+        </button>
         <h2 className="text-2xl font-semibold mb-4">Payment</h2>
         <p className="mb-4">Total Amount: ₹{coursePrice}</p>
 
@@ -40,13 +46,6 @@ const PaymentModal = ({ isOpen, onClose, coursePrice, onPayWithWallet }) => {
             unlockedColor="#28a745" // Color when unlocked (optional)
           />
         </div>
-
-        <button
-          className="bg-red-500 text-white px-4 py-2 rounded w-full mt-4"
-          onClick={onClose}
-        >
-          Cancel
-        </button>
       </div>
     </div>
   );
