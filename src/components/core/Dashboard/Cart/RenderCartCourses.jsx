@@ -9,7 +9,7 @@ const RenderCartCourses = () => {
   const { cart } = useSelector((state) => state.cart)
   const dispatch = useDispatch()
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col border-[1px] border-richblack-500 p-4 rounded-md">
       {cart.map((course, indx) => (
         <div
           key={course._id}
@@ -48,16 +48,17 @@ const RenderCartCourses = () => {
             </div>
           </div>
           <div className="flex flex-col items-end space-y-2">
+          <p className="mb-6 text-3xl font-medium text-yellow-100">
+              ₹ {course?.price}
+            </p>
             <button
               onClick={() => dispatch(removeFromCart(course._id))}
               className="flex items-center gap-x-1 rounded-md border border-richblack-600 bg-richblack-700 py-3 px-[12px] text-pink-200"
             >
               <RiDeleteBin6Line />
-              <span>Remove</span>
+              {/* <span>Remove</span> */}
             </button>
-            <p className="mb-6 text-3xl font-medium text-yellow-100">
-              ₹ {course?.price}
-            </p>
+           
           </div>
         </div>
       ))}
