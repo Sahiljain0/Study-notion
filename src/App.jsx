@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import "./App.css";
 import NavBar from "./components/common/NavBar";
 import OpenRoute from "./components/core/Auth/OpenRoute";
-import Login from "./pages/login";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
