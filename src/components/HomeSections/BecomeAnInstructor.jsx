@@ -6,15 +6,15 @@ import { FaArrowRight } from "react-icons/fa";
 const BecomeAnInsructor = () => {
   return (
     <>
-      <div className="flex flex-row w-full px-20 items-center  justify-center gap-10 mt-16">
-        <div className="flex w-[50%] p-20 items-center justify-center">
+      <div className="flex flex-col md:flex-row w-full px-4 md:px-20 items-center  justify-center gap-10 mt-4 md:mt-16">
+        <div className="flex  w-full md:w-[50%] p-4 md:p-20 items-center justify-center">
           <img
             src={Image}
             alt="Instructor image"
             className="shadow-2xl shadow-blue-100 "
           />
         </div>
-        <div className="flex flex-col gap-5 items-start w-[50%]">
+        <div className="flex flex-col px-4 gap-5 items-start w-full md:w-[50%]">
           <div className="flex flex-col font-bold text-4xl">
             <p>Become an</p>
             <p>
