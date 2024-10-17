@@ -8,9 +8,9 @@ const Section3 = () => {
        {/* Code Section 1  */}
        <div>
           <CodeBlocks
-            position={"lg:flex-row"}
+            position={"md:flex-row flex-col "}
             heading={
-              <div className="text-4xl font-semibold">
+              <div className="md:text-4xl text-3xl mb-2  font-semibold">
                 Unlock your
                 <HighLightText text={"coding potential"} /> with our online
                 courses.
@@ -38,9 +38,9 @@ const Section3 = () => {
         {/* Code Section 2 */}
         <div>
           <CodeBlocks
-            position={"lg:flex-row-reverse"}
+            position={"md:flex-row-reverse hidden"}
             heading={
-              <div className="w-[100%] text-4xl font-semibold lg:w-[50%]">
+              <div className="w-[100%] md:text-4xl text-3xl mb-2 font-semibold lg:w-[50%]">
                 Start
                 <HighLightText text={"coding in seconds"} />
               </div>
