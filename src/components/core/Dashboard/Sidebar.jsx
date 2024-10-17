@@ -138,7 +138,7 @@ const Sidebar = () => {
       </div>
 
       {/* mobile sidebar */}
-      <div className="flex lg:hidden fixed bottom-0 justify-between items-center px-2 py-1 bg-richblack-900 z-50 w-full">
+      <div className="flex lg:hidden rounded-t-xl border-t-[0.01px] border-richblack-200 fixed bottom-0 justify-between items-center px-4 py-3 bg-richblack-900 z-50 w-full">
         <div className="flex flex-row gap-1 w-full justify-between">
           {sidebarLinks.map((link) => {
             if (link.type && user?.accountType !== link.type) return null;
@@ -147,11 +147,14 @@ const Sidebar = () => {
             );
           })}
           <SidebarLink
+          
             link={{ name: "Settings", path: "/dashboard/settings" }}
             iconName="VscSettingsGear"
           />
         </div>
       </div>
+     
+
 
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </div>
