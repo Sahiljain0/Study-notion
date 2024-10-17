@@ -67,7 +67,7 @@ const SidebarLink = ({ link, iconName }) => {
     <NavLink
       to={link.path}
       className={` py-2 px-4 relative md:px-8 md:py-2 text-sm font-medium transition-all duration-300 ${
-        matchRoute(link.path) ? "bg-yellow-800" : "bg-opacity-0"
+        matchRoute(link.path) ? "text-yellow-400" : "bg-opacity-0"
       }`}
     >
       <div
