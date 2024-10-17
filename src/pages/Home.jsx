@@ -11,8 +11,8 @@ import Reviews from "../components/HomeSections/Reviews";
 import Footer from "../components/common/Footer";
 const Home = () => {
   return (
-    <div className="relative mx-auto flex flex-col w-full items-center text-white justify-between">
-          <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white">
+    <div className="relative mx-auto flex flex-col w-full items-center text-white md:justify-between">
+          <div className="relative mx-2 md:mx-auto flex w-full md:w-11/12 max-w-maxContent flex-col items-center md:justify-between gap-8 text-white">
 
       <Section1 />
       <Section2 />

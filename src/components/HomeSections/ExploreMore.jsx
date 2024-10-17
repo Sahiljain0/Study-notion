@@ -27,12 +27,12 @@ const ExploreMore = () => {
     setCurrentCard(result[0].courses[0].heading);
   }
   return (
-    <div className="relative flex w-full px-20 flex-col  items-center mb-28  ">
-      <div className="text-4xl font-bold">
+    <div className="relative flex w-full px-4 md:px-20 flex-col  items-center mb-10 md:mb-28  ">
+      <div className="md:text-4xl text-3xl  font-bold">
         Unlock the
         <HighLightText text={"Power of code"} />
       </div>
-      <div className="text-richblack-300 text-md my-4 mb-10">
+      <div className="text-richblack-300 text-md my-4 mb-4 md:mb-10">
         Learn to build Anthing you can imagine.
       </div>
      
@@ -62,7 +62,7 @@ const ExploreMore = () => {
 
    {/* **************************************************************** */}
  
-   <div className="lg:absolute gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3">
+   <div className="lg:absolute gap-8 md:gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3">
    {
             courses.map(  (element, index) => {
                 return (

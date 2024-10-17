@@ -14,10 +14,10 @@ const CodeBlocks = ({
   backgroundGradient,
 }) => {
   return (
-    <div className={`flex ${position} gap-10 my-6 mx-10 justify-between`}>
+    <div className={`flex ${position} flex-col md:gap-10 px-6 my-6 md:mx-10 gap-10 md:justify-between`}>
      
       {/* section 1 */}
-      <div className="w-[50%] p-10 flex flex-col gap-8">
+      <div className="md:w-[50%] w-full md:p-10 flex flex-col md:gap-8">
         {heading} 
         <div className="text-richblack-300 font-bold">{subheading}</div>
         <div className="flex gap-7 mt-7">
@@ -34,7 +34,7 @@ const CodeBlocks = ({
         </div>
       </div>
       {/* Section 2 */}
-      <div className="h-fit code-border rounded-3xl flex flex-row py-3 text-[10px] sm:text-sm leading-[18px] sm:leading-6 relative w-[100%] lg:w-[470px]">
+      <div className="h-fit  glass rounded-3xl flex flex-row py-3 text-[10px] sm:text-sm leading-[18px] sm:leading-6 relative w-full md:w-[470px]">
         {backgroundGradient}
         {/* Indexing */}
         <div className="text-center flex flex-col   w-[10%] select-none text-richblack-400 font-inter font-bold ">
