@@ -7,7 +7,7 @@ import CTAButton  from "../core/HomePage/Button";
 const LearningLanguageSection = () => {
   return (
     <>
-      <div className="flex bg-white  flex-col items-center gap-3 px-4 md:px-20 w-full py-10">
+      <div className="flex bg-white pt-20 md:pt-0 flex-col items-center gap-3 px-4 md:px-20 w-full py-10">
         <div className="font-bold text-black text-3xl text-center md:text-4xl">
           Your swiss knife for
           <HighLightText text={"learning any language"} />
