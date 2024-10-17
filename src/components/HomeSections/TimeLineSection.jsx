@@ -31,12 +31,12 @@ const timeline = [
 const TimeLineSection = () => {
   return (
     <>
-      <div className="flex flex-row  gap-15 bg-white items-center px-20 py-20 justify-center w-full">
-        <div className="flex flex-col text-richblack-900 gap-5  w-[45%]">
+      <div className="flex flex-col md:flex-row  gap-15 bg-[#F9F9F9] bg-opacity-100 items-center px-4 md:px-20 py-6 md:py-20 justify-center w-full">
+        <div className="flex flex-col px-2 text-richblack-900 gap-5 w-full  md:w-[45%]">
           {timeline.map((element, index) => {
             return (
               <div className="flex gap-6  flex-row" key={index}>
-                <div className="flex bg-white justify-center items-center h-[50px] w-[50px">
+                <div className="flex bg-white justify-center items-center h-[50px] w-[50px]">
                   <img src={element.Logo} alt="Logoimage" />
                 </div>
                 <div className="flex flex-col ">
@@ -50,14 +50,14 @@ const TimeLineSection = () => {
           })}
         </div>
 
-        <div className="relative w-[50%] shadow-blue-200">
+        <div className="relative mt-6 md:mt-0 w-full md:w-[50%] shadow-blue-200">
           <img
             src={Image}
             alt="timelineImage"
-            className="shadow-white h-auto w-[500px] object-cover"
+            className="shadow-white h-auto w-full md:w-[500px] object-cover"
           ></img>
-        <div className="absolute flex flex-row text-white uppercasepy-10 py-7
-         bg-caribbeangreen-700  left-[50%] translate-x-[-60%] translate-y-[-50%]">
+        <div className="absolute  flex flex-row text-white uppercasepy-10 py-7
+         bg-caribbeangreen-700  -mt-12 md:-mt-0 md:left-[50%] md:translate-x-[-60%] md:translate-y-[-50%]">
           <div className="flex flex-row gap-5 items-center border-r border-caribbeangreen-300 px-7">
             <p className="text-3xl font-bold ">10</p>
             <p className="text-caribbeangreen-300  text-sm">Years Of Experience</p>

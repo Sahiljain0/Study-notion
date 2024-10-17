@@ -7,7 +7,7 @@ import Section4 from "../components/HomeSections/Section4";
 import TimeLineSection from "../components/HomeSections/TimeLineSection";
 import LearningLanguageSection from "../components/HomeSections/LearningLanguageSection";
 import BecomeAnInsructor from "../components/HomeSections/BecomeAnInstructor";
-import Reviews from "../components/HomeSections/Reviews";
+import ReviewSlide from "../components/HomeSections/Reviews";
 import Footer from "../components/common/Footer";
 const Home = () => {
   return (
@@ -21,7 +21,7 @@ const Home = () => {
       <TimeLineSection />
       <LearningLanguageSection />
       <BecomeAnInsructor />
-      <Reviews />
+      <ReviewSlide />
       <Footer />
     </div>
   );
