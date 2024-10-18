@@ -9,9 +9,8 @@ import { NavbarLinks } from "../../data/navbar-links";
 import { apiConnector } from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
-import ProfileDropdown from "../core/Auth/ProfileDropdown";
-import { BottomNavigation } from "@mui/material";
 import WalletModal from "./WalletModal";
+import ProfileDropdown from "../core/Auth/ProfileDropdown";
 
 function Navbar() {
   const [showDropDown, setShowDropDown] = useState(false);
