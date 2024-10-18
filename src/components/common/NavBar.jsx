@@ -11,7 +11,7 @@ import { categories } from "../../services/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
 import WalletModal from "./WalletModal";
 // import ProfileDropdown from "../core/Auth/ProfileDropdown";
-import ProfileDropdown from "../core/Auth/ProfileDropdown.jsx";
+import ProfileDropdown from "../core/Auth/ProfileDropdown";
 function Navbar() {
   const [showDropDown, setShowDropDown] = useState(false);
   const { token } = useSelector((state) => state.auth);
