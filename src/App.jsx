@@ -127,8 +127,9 @@ function App() {
         )
       }
       
-        </Route>
-        <Route element={
+      
+      </Route>
+      <Route element={
         <PrivateRoute>
           <ViewCourse />
         </PrivateRoute>
