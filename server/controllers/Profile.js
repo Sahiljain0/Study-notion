@@ -335,9 +335,9 @@ exports.purchaseWithWallet = async (req, res) => {
 
     // Create initial course progress for the user
     const courseProgress = await CourseProgress.create({
-      userId: user._id,
-      courseId: course._id,
-      progress: 0 // Initialize the progress to 0 or any starting value
+      courseID: courseId,
+        userId: userId,
+        completedVideos: [],
     });
 
     // Update the user's courses and course progress

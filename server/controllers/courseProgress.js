@@ -19,10 +19,10 @@ exports.updateCourseProgress = async (req, res) => {
 
     // Find the course progress document for the user and course
     let courseProgress = await CourseProgress.findOne({
-     
+      courseID: courseId,
       userId: userId,
     })
-   console.log("course progress :",courseProgress );
+
     if (!courseProgress) {
       // If course progress doesn't exist, create a new one
       return res.status(404).json({
@@ -32,7 +32,7 @@ exports.updateCourseProgress = async (req, res) => {
     } else {
       // If course progress exists, check if the subsection is already completed
       if (courseProgress.completedVideos.includes(subsectionId)) {
-        return res.status(408).json({ error: "Subsection already completed" })
+        return res.status(400).json({ error: "Subsection already completed" })
       }
 
       // Push the subsection into the completedVideos array
