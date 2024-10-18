@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router';
-import { setCompletedLectures, setCourseSectionData, setEntireCourseData, setTotalNoOfLectures } from '../slices/viewCourseSlice';
+import { setCompletedLectures, setCourseSectionData, setEntireCourseData, setTotalNoOfLectures } from '../Redux/slices/viewCourseSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { useEffect } from 'react';

@@ -11,7 +11,7 @@ import {BiSkipPreviousCircle} from 'react-icons/bi';
 import {BiSkipNextCircle} from 'react-icons/bi';
 import {MdOutlineReplayCircleFilled} from 'react-icons/md';
 import { markLectureAsComplete } from '../../../services/operations/courseDetailsAPI';
-import { setCompletedLectures } from '../../../slices/viewCourseSlice';
+import { setCompletedLectures } from '../../../Redux/slices/viewCourseSlice';
 import { useDispatch } from 'react-redux';
 
 
