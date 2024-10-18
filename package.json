@@ -8,7 +8,8 @@
     "client": "vite",
     "server": "cd server && npm run dev",
     "build": "vite build",
-    "start": "vite"
+    "start": "vite",
+    "clean": "rimraf node_modules/.cache .next dist"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -61,6 +62,7 @@
     "concurrently": "^9.0.1",
     "eslint-plugin-react": "^7.33.2",
     "postcss": "^8.4.35",
+    "rimraf": "^6.0.1",
     "tailwindcss": "^3.4.1",
     "vite": "^5.4.3"
   }
