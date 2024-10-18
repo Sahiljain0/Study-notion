@@ -151,7 +151,7 @@ export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
       spread: 70, // Spread angle
       origin: { y: 0.6 }, // Starting position for confetti
     });
-      navigate("dashboard/my-courses");
+      navigate("/dashboard/enrolled-courses");
     } catch (error) {
       console.error("Error during purchase:", error);
 
@@ -231,7 +231,7 @@ export function buyCourses(token, courses, navigate) {
       spread: 70, // Spread angle
       origin: { y: 0.6 }, // Starting position for confetti
     });
-      navigate("dashboard/my-courses");
+      navigate("/dashboard/enrolled-courses");
     } catch (error) {
       console.error("Error during purchase:", error);
       toast.dismiss(toastId);
