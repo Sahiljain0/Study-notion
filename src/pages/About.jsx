@@ -14,7 +14,7 @@ import Footer from '../components/common/Footer';
    <div>
      <section className="bg-richblack-700">
         <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
-          <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">
+          <header className="mx-auto py-20 text-3xl lg:text-4xl font-semibold lg:w-[70%]">
             Driving Innovation in Online Education for a
             <HighLightText text={"Brighter Future"} />
             <p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]">
@@ -74,8 +74,8 @@ import Footer from '../components/common/Footer';
               />
             </div>
           </div>
-          <div className="flex flex-col items-center lg:gap-10 lg:flex-row justify-between">
-            <div className="my-24 flex lg:w-[40%] flex-col gap-10">
+          <div className="flex flex-col items-center gap-0 md:gap-10 md:flex-row justify-between">
+            <div className="md:my-24 my-4 flex lg:w-[40%] flex-col gap-10">
               <h1 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">
                 Our Vision
               </h1>
@@ -88,7 +88,7 @@ import Footer from '../components/common/Footer';
                 dynamic and interactive learning experience.
               </p>
             </div>
-            <div className="my-24 flex lg:w-[40%] flex-col gap-10">
+            <div className="md:my-24 my-4 flex lg:w-[40%] flex-col gap-10">
               <h1 className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-4xl font-semibold lg:w-[70%] ">
               Our Mission
               </h1>
@@ -102,12 +102,12 @@ import Footer from '../components/common/Footer';
       {/* ************************************************************** */}
       <StatsComponenet/>
       {/* ************************************************************** */}
-      <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
+      <section className="w-full mt-20 md:mx-auto flex md:w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
         <LearningGrid/>
         <ContactFormSection/>
       </section>
       {/* ************************************************************* */}
-      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+      <div className="relative md:mx-auto w-full my-20 flex md:w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
         {/* Reviws from Other Learner */}
         <h1 className="text-center text-4xl font-semibold mt-8">
           Reviews from other learners
