@@ -6,9 +6,9 @@ const Section3 = () => {
  return (
     <>
        {/* Code Section 1  */}
-       <div>
+       <div >
           <CodeBlocks
-            position={"md:flex-row flex-col "}
+            position={"lg:flex-row    flex-col "}
             heading={
               <div className="md:text-4xl text-3xl mb-2  font-semibold">
                 Unlock your
@@ -38,7 +38,7 @@ const Section3 = () => {
         {/* Code Section 2 */}
         <div>
           <CodeBlocks
-            position={"md:flex-row-reverse hidden"}
+            position={"lg:flex-row-reverse hidden"}
             heading={
               <div className="w-[100%] md:text-4xl text-3xl mb-2 font-semibold lg:w-[50%]">
                 Start

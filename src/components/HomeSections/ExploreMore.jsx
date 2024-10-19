@@ -26,7 +26,7 @@ const ExploreMore = () => {
   };
 
   return (
-    <div>
+    <div >
       {/* Explore more section */}
       <div>
         <div className="text-4xl font-semibold text-center my-10">
@@ -39,7 +39,7 @@ const ExploreMore = () => {
       </div>
 
       {/* Tabs Section */}
-      <div className="hidden lg:flex gap-5 -mt-5 mx-auto w-max bg-richblack-800 text-richblack-200 p-1 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
+      <div className="hidden md:flex gap-5 -mt-5 mx-auto w-max bg-richblack-800 text-richblack-200 p-1 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
         {tabsName.map((ele, index) => {
           return (
             <div
@@ -59,7 +59,7 @@ const ExploreMore = () => {
       <div className="hidden lg:block lg:h-[200px]"></div>
 
       {/* Cards Group */}
-      <div className="lg:absolute gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3">
+      <div className="lg:absolute md:mt-4 gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3">
         {courses.map((ele, index) => {
           return (
             <CourseCard
