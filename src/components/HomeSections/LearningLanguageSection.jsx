@@ -7,7 +7,7 @@ import CTAButton  from "../core/HomePage/Button";
 const LearningLanguageSection = () => {
   return (
     <>
-      <div className="flex bg-white pt-20 md:pt-0 flex-col items-center gap-3 px-4 md:px-20 w-full py-10">
+      <div className="flex md:pt-10  bg-white pt-20  lg:pt-10 flex-col items-center gap-3 px-4 md:px-20 w-full py-10">
         <div className="font-bold text-black text-3xl text-center md:text-4xl">
           Your swiss knife for
           <HighLightText text={"learning any language"} />
@@ -19,17 +19,13 @@ const LearningLanguageSection = () => {
             and more.
           </p>
         </div>
-        <div className=" flex flex-col w-full mt-5 md:flex-row justify-center items-center">
-          <img src={Image1} alt="Image1" className="object-contain -mr-30  h-[320px] w-auto"/>
-          <img src={Image2} alt="Image2" className=" object-contain h-[380px] w-auto"/>
-          <img src={Image3} alt="Image3"className="object-contain -ml-34 h-[320px] w-auto" />
+        <div className=" flex flex-col w-full  mt-5 md:flex-row justify-center items-center">
+          <img src={Image1} alt="Image1" className="object-contain -mr-30 md:h-[220px] lg:h-[380px]  h-[320px] w-auto"/>
+          <img src={Image2} alt="Image2" className=" object-contain md:h-[220px] lg:h-[380px]  h-[380px] w-auto"/>
+          <img src={Image3} alt="Image3"className="object-contain md:h-[220px] lg:h-[380px]  -ml-34 h-[320px] w-auto" />
 
         </div>
-        <div>
-           
-                <CTAButton active={true} linkto={"/signup"}>Learn More</CTAButton>
-          
-        </div>
+        
       </div>
     </>
   );

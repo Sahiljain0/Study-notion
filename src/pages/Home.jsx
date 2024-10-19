@@ -12,7 +12,7 @@ import Footer from "../components/common/Footer";
 const Home = () => {
   return (
     <div className="relative mx-auto flex flex-col w-full items-center text-white md:justify-between">
-      <div className="relative mx-2 md:mx-auto flex w-full md:w-11/12 max-w-maxContent flex-col items-center md:justify-between gap-8 text-white">
+      <div className="relative mx-2 md:px-6 lg:mx-auto flex w-full lg:w-11/12 max-w-maxContent flex-col items-center lg:justify-between gap-8 text-white">
         <Section1 />
         <Section2 />
         <Section3 />
