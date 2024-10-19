@@ -1,7 +1,7 @@
 import React from "react";
 import { FooterLink2 } from "../../data/footer-links";
 import { Link } from "react-router-dom";
-
+import { FaLinkedin, FaGithub, FaEnvelope, FaUserAlt } from "react-icons/fa";
 // Images
 import Logo from "../../assets/Logo/Logo-Full-Light.png";
 
@@ -41,17 +41,46 @@ const Footer = () => {
                       key={i}
                       className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                     >
-                      <Link to={ele.toLowerCase()}>{ele}</Link>
+                      <Link to="/">{ele}</Link>
                     </div>
                   );
                 })}
               </div>
               <div className="flex gap-3 text-lg">
-                <FaFacebook />
-                <FaGoogle />
-                <FaTwitter />
-                <FaYoutube />
+                <a
+                  href="https://www.linkedin.com/in/sahil-jain-28433022a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin className="hover:text-richblack-200" />
+                </a>
+                <a
+                  href="https://github.com/Sahiljain0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <FaGithub className="hover:text-richblack-200" />
+                </a>
+                <a
+                  href="mailto:jainsahil760@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Mail"
+                >
+                  <FaEnvelope className="hover:text-richblack-200" />
+                </a>
+                <a
+                  href="https://tricrafters.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Portfolio"
+                >
+                  <FaUserAlt className="hover:text-richblack-200" />
+                </a>
               </div>
+
               <div></div>
             </div>
 
@@ -67,9 +96,7 @@ const Footer = () => {
                       key={index}
                       className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                     >
-                      <Link to={ele.split(" ").join("-").toLowerCase()}>
-                        {ele}
-                      </Link>
+                      <Link to="/">{ele}</Link>
                     </div>
                   );
                 })}
@@ -79,7 +106,7 @@ const Footer = () => {
                 Support
               </h1>
               <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200 mt-2">
-                <Link to={"/help-center"}>Help Center</Link>
+                <Link to={"/"}>Help Center</Link>
               </div>
             </div>
 
@@ -95,9 +122,7 @@ const Footer = () => {
                       key={index}
                       className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                     >
-                      <Link to={ele.split(" ").join("-").toLowerCase()}>
-                        {ele}
-                      </Link>
+                      <Link to="/">{ele}</Link>
                     </div>
                   );
                 })}
@@ -113,9 +138,7 @@ const Footer = () => {
                       key={index}
                       className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                     >
-                      <Link to={ele.split(" ").join("-").toLowerCase()}>
-                        {ele}
-                      </Link>
+                      <Link to="/">{ele}</Link>
                     </div>
                   );
                 })}
@@ -138,7 +161,7 @@ const Footer = () => {
                           key={index}
                           className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                         >
-                          <Link to={link.link}>{link.title}</Link>
+                          <Link to="/">{link.title}</Link>
                         </div>
                       );
                     })}
@@ -164,15 +187,15 @@ const Footer = () => {
                       : "border-r border-richblack-700 cursor-pointer hover:text-richblack-50 transition-all duration-200"
                   } px-3 `}
                 >
-                  <Link to={ele.split(" ").join("-").toLocaleLowerCase()}>
-                    {ele}
-                  </Link>
+                  <Link to="/">{ele}</Link>
                 </div>
               );
             })}
           </div>
 
-          <div className="text-center">Made by Sahil jain 🗿 © 2024 Studynotion</div>
+          <div className="text-center">
+            Made by Sahil jain © 2024 Studynotion
+          </div>
         </div>
       </div>
     </div>
