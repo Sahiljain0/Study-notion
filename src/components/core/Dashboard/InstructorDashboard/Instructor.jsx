@@ -16,9 +16,9 @@ export default function Instructor() {
     (async () => {
       setLoading(true);
       const instructorApiData = await getInstructorData(token);
-      console.log("instructor data : ",instructorApiData);
+      console.log("instructor data : ", instructorApiData);
       const result = await fetchInstructorCourses(token);
-      console.log("resut is : ",result);
+      console.log("resut is : ", result);
       if (instructorApiData.length) setInstructorData(instructorApiData);
       if (result) {
         setCourses(result);
@@ -36,10 +36,10 @@ export default function Instructor() {
     (acc, curr) => acc + curr.totalStudentsEnrolled,
     0
   );
-  console.log("Total stuents : ",totalStudents);
+  console.log("Total stuents : ", totalStudents);
 
   return (
-    <div>
+    <div className="flex flex-col w-full ">
       <div className="space-y-2">
         <h1 className="text-2xl font-bold text-richblack-5">
           Hi {user?.firstName} 👋
@@ -51,21 +51,25 @@ export default function Instructor() {
       {loading ? (
         <div className="spinner"></div>
       ) : courses.length > 0 ? (
-        <div>
-          <div className="my-4 flex h-[450px] space-x-4">
+        <div className="flex flex-col">
+          <div className="my-4 flex flex-col gap-4 lg:gap-6 md:gap-4 md:flex-row  ">
             {/* Render chart / graph */}
-            {totalAmount > 0 || totalStudents > 0 ? (
-              <InstructorChart courses={instructorData} />
-            ) : (
-              <div className="flex-1 rounded-md bg-richblack-800 p-6">
-                <p className="text-lg font-bold text-richblack-5">Visualize</p>
-                <p className="mt-4 text-xl font-medium text-richblack-50">
-                  Not Enough Data To Visualize
-                </p>
-              </div>
-            )}
+            <div className="md:w-[75%] lg:w-[70%] w-full">
+              {totalAmount > 0 || totalStudents > 0 ? (
+                <InstructorChart courses={instructorData} />
+              ) : (
+                <div className="flex-1 rounded-md bg-richblack-800 p-6">
+                  <p className="text-lg font-bold text-richblack-5">
+                    Visualize
+                  </p>
+                  <p className="mt-4 text-xl font-medium text-richblack-50">
+                    Not Enough Data To Visualize
+                  </p>
+                </div>
+              )}
+            </div>
             {/* Total Statistics */}
-            <div className="flex min-w-[250px] flex-col rounded-md bg-richblack-800 p-6">
+            <div className="flex  flex-col lg:w-[28%]   rounded-md bg-richblack-800 p-6">
               <p className="text-lg font-bold text-richblack-5">Statistics</p>
               <div className="mt-4 space-y-4">
                 <div>
@@ -89,7 +93,7 @@ export default function Instructor() {
               </div>
             </div>
           </div>
-          <div className="rounded-md bg-richblack-800 p-6">
+          <div className="rounded-md bg-richblack-800 p-6 pb-10">
             {/* Render 3 courses */}
             <div className="flex items-center justify-between">
               <p className="text-lg font-bold text-richblack-5">Your Courses</p>
@@ -97,13 +101,18 @@ export default function Instructor() {
                 <p className="text-xs font-semibold text-yellow-50">View All</p>
               </Link>
             </div>
-            <div className="my-4 flex items-start space-x-6">
+            <div className="my-4 flex w-full overflow-x-scroll scrollbar-hide items-start space-x-6 scrollbar-hide">
               {courses.slice(0, 3).map((course) => (
-                <div key={course._id} className="w-1/3">
+                <div
+                  
+                  key={course._id}
+                  className=" w-[80%] min-w-[90%] md:min-w-[33.33%] md:w-1/3"
+                >
+                <Link to="/dashboard/my-courses">
                   <img
                     src={course.thumbnail}
                     alt={course.courseName}
-                    className="h-[201px] w-full rounded-md object-cover"
+                    className="h-[200px] w-full rounded-md object-cover"
                   />
                   <div className="mt-3 w-full">
                     <p className="text-sm font-medium text-richblack-50">
@@ -121,6 +130,7 @@ export default function Instructor() {
                       </p>
                     </div>
                   </div>
+                </Link>
                 </div>
               ))}
             </div>
