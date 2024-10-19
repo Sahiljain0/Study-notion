@@ -120,3 +120,14 @@ html, body {
   -webkit-backdrop-filter: blur(7.3px);
   border: 1px solid rgba(13, 18, 30, 0.3);
   }
+
+  /* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
