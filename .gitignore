@@ -7,9 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Ignore .env files
+# misc
+.DS_Store
+.env.local
 .env
-.env.*  # Ignores all env-related files like .env.local, .env.production, etc.
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Node modules and build directories
 node_modules
