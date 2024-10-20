@@ -165,14 +165,10 @@ function Navbar() {
               </button>
             </Link>
           )}
-          {token !== null && <ProfileDropdown />}
+          {token !== null &&(<ProfileDropdown/>)}
         </div>
         <div className="mr-4 md:hidden flex justify-center items-center gap-4">
-          {/* <AiOutlineMenu
-            onClick={() => setShowDropDown(!showDropDown)}
-            color="white"
-            fontSize={24}
-          /> */}
+         
           {user && user.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <button
@@ -274,16 +270,7 @@ function Navbar() {
               )}
             </li>
           ))}
-          {/* {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
-            <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart className="text-2xl  text-richblack-100" />
-              {totalItems > 0 && (
-                <span className="absolute  animate-bounce transition-all  ease-in-out  -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-          )} */}
+          
           {token === null && (
             <Link to="/login">
               <button
@@ -305,7 +292,7 @@ function Navbar() {
               <button>Sign up</button>
             </Link>
           )}
-          {token !== null && <ProfileDropdown />}
+          {token !== null && (<ProfileDropdown />)}
         </ul>
       </div>
     </div>
