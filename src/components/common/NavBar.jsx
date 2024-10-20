@@ -10,7 +10,6 @@ import { apiConnector } from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
 import WalletModal from "./WalletModal";
-// import ProfileDropdown from "../core/Auth/ProfileDropdown";
 import ProfileDropdown from "../core/Auth/ProfileDropdown";
 function Navbar() {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -174,7 +173,7 @@ function Navbar() {
             color="white"
             fontSize={24}
           /> */}
-            {user && user.accountType === ACCOUNT_TYPE.STUDENT && (
+          {user && user.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <button
                 onClick={handleWalletModal}
@@ -192,25 +191,25 @@ function Navbar() {
             </>
           )}
           <div>
-           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
-            <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart className="text-3xl  text-richblack-100" />
-              {totalItems > 0 && (
-                <span className="absolute  animate-bounce transition-all  ease-in-out  -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-          )}
+            {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+              <Link to="/dashboard/cart" className="relative">
+                <AiOutlineShoppingCart className="text-3xl  text-richblack-100" />
+                {totalItems > 0 && (
+                  <span className="absolute  animate-bounce transition-all  ease-in-out  -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                    {totalItems}
+                  </span>
+                )}
+              </Link>
+            )}
           </div>
           <button>
-           <img
-          src={user?.image}
-          onClick={() => setShowDropDown(!showDropDown)}
-          alt={`profile-${user?.firstName}`}
-          className="aspect-square w-[30px] rounded-full object-cover"
-        />
-        </button>
+            <img
+              src={user?.image}
+              onClick={() => setShowDropDown(!showDropDown)}
+              alt={`profile-${user?.firstName}`}
+              className="aspect-square w-[30px] rounded-full object-cover"
+            />
+          </button>
         </div>
       </div>
       {/* // mobile */}
@@ -306,7 +305,7 @@ function Navbar() {
               <button>Sign up</button>
             </Link>
           )}
-          {token !== null && <ProfileDropdown/>}
+          {token !== null && <ProfileDropdown />}
         </ul>
       </div>
     </div>

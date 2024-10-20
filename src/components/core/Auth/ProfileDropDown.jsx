@@ -4,10 +4,10 @@ import { VscDashboard, VscSignOut } from "react-icons/vsc"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
-import useOnClickOutside from "../../../hooks/useOnClickOutside";
-import { logout } from "../../../services/operations/authAPI";
+import useOnClickOutside from "../../../hooks/useOnClickOutside"
+import { logout } from "../../../services/operations/authAPI"
 
-const ProfileDropdown = () => {
+export default function ProfileDropdown() {
   const { user } = useSelector((state) => state.profile)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -16,10 +16,7 @@ const ProfileDropdown = () => {
 
   useOnClickOutside(ref, () => setOpen(false))
 
-  if (!user){
-    console.log("no user");
-    return localStorage.setItem("token",null)
-  } 
+  if (!user) return null
 
   return (
     <button className="relative" onClick={() => setOpen(true)}>
@@ -34,7 +31,7 @@ const ProfileDropdown = () => {
       {open && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-[118%] -right-8 z-[1000] divide-y-[1px] divide-richblack-700 overflow-hidden rounded-md border-[1px] border-richblack-700 bg-richblack-800"
+          className="absolute top-[118%] right-0 z-[1000] divide-y-[1px] divide-richblack-700 overflow-hidden rounded-md border-[1px] border-richblack-700 bg-richblack-800"
           ref={ref}
         >
           <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
@@ -58,6 +55,3 @@ const ProfileDropdown = () => {
     </button>
   )
 }
-
-
-export default ProfileDropdown;
