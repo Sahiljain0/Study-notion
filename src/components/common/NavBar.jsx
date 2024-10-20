@@ -165,10 +165,13 @@ function Navbar() {
               </button>
             </Link>
           )}
-          {token !== null &&(<ProfileDropdown/>)}
+          {token != null && (
+            <div className=" mt-2">
+              <ProfileDropdown />
+            </div>
+          )}
         </div>
         <div className="mr-4 md:hidden flex justify-center items-center gap-4">
-         
           {user && user.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <button
@@ -270,7 +273,7 @@ function Navbar() {
               )}
             </li>
           ))}
-          
+
           {token === null && (
             <Link to="/login">
               <button
@@ -292,7 +295,12 @@ function Navbar() {
               <button>Sign up</button>
             </Link>
           )}
-          {token !== null && (<ProfileDropdown />)}
+          {token != null && (
+            <div className=" mt-2">
+              <ProfileDropdown />
+             
+            </div>
+          )}
         </ul>
       </div>
     </div>
