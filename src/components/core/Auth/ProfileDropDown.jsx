@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom"
 import useOnClickOutside from "../../../hooks/useOnClickOutside"
 import { logout } from "../../../services/operations/authAPI"
 
-export default function ProfileDropdown() {
+export default function ProfileDropDown() {
   const { user } = useSelector((state) => state.profile)
   const dispatch = useDispatch()
   const navigate = useNavigate()

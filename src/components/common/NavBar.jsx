@@ -3,14 +3,13 @@ import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, matchPath, useLocation } from "react-router-dom";
-
+import ProfileDropDown from "../core/Auth/ProfileDropDown";
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../data/navbar-links";
 import { apiConnector } from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
 import WalletModal from "./WalletModal";
-import ProfileDropdown from "../core/Auth/ProfileDropdown";
 function Navbar() {
   const [showDropDown, setShowDropDown] = useState(false);
   const { token } = useSelector((state) => state.auth);
@@ -167,7 +166,7 @@ function Navbar() {
           )}
           {token != null && (
             <div className=" mt-2">
-              <ProfileDropdown />
+             <ProfileDropDown/>
             </div>
           )}
         </div>
@@ -297,7 +296,7 @@ function Navbar() {
           )}
           {token != null && (
             <div className=" mt-2">
-              <ProfileDropdown />
+             <ProfileDropDown/>
              
             </div>
           )}
