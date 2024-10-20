@@ -1,5 +1,5 @@
 // const BASE_URL = "https://localhost:4000/api/v1"
-const BASE_URL = "https://study-notion-woad-six.vercel.app/"
+const BASE_URL = "http://localhost:4000/api/v1"
 
 // AUTH ENDPOINTS
 export const endpoints = {
