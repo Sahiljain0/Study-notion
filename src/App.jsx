@@ -37,7 +37,7 @@ function App() {
       <NavBar />
       <Toaster />
       
-      <audio id="notificationSound" src="images\paytm_payment_tune.mp3" preload="auto" />
+      <audio id="notificationSound" src="/sound.mp3" preload="auto" />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="catalog/:catalogName" element={<Catalog/>} />

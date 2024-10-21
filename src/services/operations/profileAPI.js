@@ -20,7 +20,6 @@ const {
   GET_WALLET_DATA,
   BUY_COURSES,
 } = profileEndpoints;
-const successSound = new Audio('/images/notificationSound');
 
 export function getUserDetails(token, navigate) {
   return async (dispatch) => {
