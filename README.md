@@ -1,6 +1,6 @@
 
 # StudyNotion - EdTech Platform
-:rocket: [Link to website][] .
+:rocket: [Link to website][] 
 
 
 ![Main Page](images/mainpage.png)
