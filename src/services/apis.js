@@ -1,7 +1,5 @@
 
-// const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-const BASE_URL = "https://courseplatfrom.onrender.com";
+const BASE_URL = "https://courseplatfrom.onrender.com/api/v1";
 
 // AUTH ENDPOINTS
 export const endpoints = {
