@@ -31,15 +31,27 @@ database.connect();
 app.use(express.json());
 app.use(cookieParaser());
 
+// const whitelist = process.env.CORS_ORIGIN
+//   ? JSON.parse(process.env.CORS_ORIGIN)
+//   : ["*"];
+
+// app.use(
+//   cors({
+//     origin: whitelist,
+//     credentials: true,
+//     maxAge: 14400,
+//   })
+// );
+// Use JSON.parse safely to handle any potential issues with JSON format
 const whitelist = process.env.CORS_ORIGIN
   ? JSON.parse(process.env.CORS_ORIGIN)
-  : ["*"];
+  : ["*"]; // Default to allow all origins if not set
 
 app.use(
   cors({
     origin: whitelist,
     credentials: true,
-    maxAge: 14400,
+    maxAge: 14400, // CORS preflight cache duration
   })
 );
 
