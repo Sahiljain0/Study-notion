@@ -103,9 +103,7 @@ export default function ReviewSlide() {
         <h2 className="hidden md:flex text-3xl font-bold text-center mb-8">
           We care about our customers&apos; experience too
         </h2>
-        <h2 className="md:hidden text-3xl font-bold text-center mb-4">
-          Reviews
-        </h2>
+        
       </div>
       <div className="relative">
         <div className="overflow-hidden">
