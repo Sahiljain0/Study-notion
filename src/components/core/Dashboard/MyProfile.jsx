@@ -10,9 +10,9 @@ const MyProfile = () => {
     const {user} = useSelector((state) => state.profile)
     const navigate = useNavigate();
   return (
-    <div className='mx-auto w-11/12 max-w-[1000px] py-10'>
-        <div className='py-10'>
-        <h1 className='mb-14 text-3xl font-medium text-richblack-5'>
+    <div className='mx-auto w-11/12 max-w-[1000px] mb-10 md:py-10'>
+        <div className='md:py-10'>
+        <h1 className='md:mb-14 mb-6 text-3xl font-medium text-richblack-5'>
             My Profile
         </h1>
         
@@ -39,7 +39,7 @@ const MyProfile = () => {
         </div>
 
         {/* section 2 */}
-        <div className='my-10 flex flex-col gap-y-3 md:gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-3 md:p-8 md:px-12'>
+        <div className='md:my-10 my-4 flex flex-col gap-y-3 md:gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-3 md:p-8 md:px-12'>
             <div className='flex w-full items-center justify-between'>
                 <p className='text-lg font-semibold text-richblack-5'>About</p>
                 <div >
@@ -54,7 +54,7 @@ const MyProfile = () => {
         </div>
 
         {/* section 3 */}
-        <div className='my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-3 md:p-8 md:px-12'>
+        <div className='md:my-10 my-4 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-3 md:p-8 md:px-12'>
             <div className='flex w-full items-center justify-between'>
                 <p className='text-lg font-semibold text-richblack-5'>Personal Details</p>
                 <div className=''>

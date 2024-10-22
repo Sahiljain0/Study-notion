@@ -659,12 +659,12 @@ function Navbar() {
 
           {token != null && (
             <div className="mt-4">
-              {open && (
+            
                 <div>
                   <Link
                     to="/dashboard/my-profile"
                     onClick={() => {
-                      setOpen(false);
+                      
                       setShowDropDown(false); // Close sidebar
                       setShowCatalog(false); // Reset catalog state
                     }}
@@ -677,7 +677,7 @@ function Navbar() {
                   <div
                     onClick={() => {
                       dispatch(logout(navigate));
-                      setOpen(false);
+                      
                       setShowDropDown(false); // Close sidebar
                       setShowCatalog(false); // Reset catalog state
                     }}
@@ -687,7 +687,7 @@ function Navbar() {
                     <span>Logout</span>
                   </div>
                 </div>
-              )}
+           
             </div>
           )}
         </ul>
