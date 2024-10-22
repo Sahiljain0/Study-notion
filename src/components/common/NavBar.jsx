@@ -500,7 +500,7 @@ function Navbar() {
             <>
               <button
                 onClick={handleWalletModal}
-                className="rounded-[8px] border  border-richblack-700 bg-richblack-800 py-[2px] px-[14px] md:py-[5px] text-richblack-100 hover:bg-richblack-700 transition duration-200"
+                className="rounded-[8px] border  border-richblack-700 bg-richblack-800 py-[2px] px-[14px] md:py-[5px] font-semibold text-yellow-200 hover:bg-richblack-700 transition duration-200"
                 aria-label="Open Wallet Modal"
               >
                 ${user.wallet}
