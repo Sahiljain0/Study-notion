@@ -169,12 +169,12 @@ console.log("subsection id :",subSectionId);
   }
 
   return (
-    <div className="flex flex-col gap-5 text-white">
+    <div className="flex   flex-col gap-5 py-2 text-white">
       {!videoData ? (
         <img
           src={previewSource}
           alt="Preview"
-          className="h-full w-full rounded-md object-cover"
+          className="h-full  w-full rounded-md object-cover"
         />
       ) : (
         <Player
