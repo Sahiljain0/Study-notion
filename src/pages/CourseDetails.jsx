@@ -42,7 +42,6 @@ function CourseDetails() {
         const res = await fetchCourseDetails(courseId);
         setResponse(res);
       } catch (error) {
-        console.log("Could not fetch Course Details");
       }
     })();
   }, [courseId]);
@@ -123,17 +122,14 @@ function CourseDetails() {
         courseId,
       };
 
-      console.log("Token:", token); // Debugging - Check if token object is structured correctly
 
       try {
         dispatch(purchaseWithWallet(token, price, courseId, navigate)); // Make sure to await dispatch
         setIsPaymentModalOpen(false);
       } catch (error) {
-        console.error("Error processing payment:", error);
         toast.error("Payment failed. Please try again.");
       }
     } else {
-      console.error("User information is missing.");
       toast.error("User information is missing. Please log in again.");
     }
   };

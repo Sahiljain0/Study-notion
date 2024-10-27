@@ -40,14 +40,12 @@ export default function CourseInformationForm() {
         setLoading(true)
         const categories = await fetchCourseCategories()
         if (categories.length > 0) {
-          // console.log("categories", categories)
           setCourseCategories(categories)
         }
         setLoading(false)
       }
       // if form is in edit mode
       if (editCourse) {
-        // console.log("data populated", editCourse)
         setValue("courseTitle", course.courseName)
         setValue("courseShortDesc", course.courseDescription)
         setValue("coursePrice", course.price)
@@ -64,7 +62,6 @@ export default function CourseInformationForm() {
   
     const isFormUpdated = () => {
       const currentValues = getValues()
-      // console.log("changes after editing form values:", currentValues)
       if (
         currentValues.courseTitle !== course.courseName ||
         currentValues.courseShortDesc !== course.courseDescription ||
@@ -83,17 +80,12 @@ export default function CourseInformationForm() {
   
     //   handle next button click
     const onSubmit = async (data) => {
-      // console.log(data)
   
       if (editCourse) {
         // const currentValues = getValues()
-        // console.log("changes after editing form values:", currentValues)
-        // console.log("now course:", course)
-        // console.log("Has Form Changed:", isFormUpdated())
         if (isFormUpdated()) {
           const currentValues = getValues()
           const formData = new FormData()
-          // console.log(data)
           formData.append("courseId", course._id)
           if (currentValues.courseTitle !== course.courseName) {
             formData.append("courseName", data.courseTitle)
@@ -125,7 +117,6 @@ export default function CourseInformationForm() {
           if (currentValues.courseImage !== course.thumbnail) {
             formData.append("thumbnailImage", data.courseImage)
           }
-          // console.log("Edit Form data: ", formData)
           setLoading(true)
           const result = await editCourseDetails(formData, token)
           setLoading(false)
