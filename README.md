@@ -190,3 +190,6 @@ Contributions are welcome If you have any suggestions or find any issues, please
 - Email: [jainsahil760@gmail.com](mailto:jainsahil760@gmail.com)
 - LinkedIn: [https://www.linkedin.com/in/sahil-jain-28433022a](https://www.linkedin.com/in/sahil-jain-28433022a)
 - Website: [Sahil jain](https://tricrafters.in/)
+
+
+## Thank you for visiting study notion
