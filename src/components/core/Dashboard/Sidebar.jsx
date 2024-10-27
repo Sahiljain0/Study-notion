@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { VscSignOut } from "react-icons/vsc";
 import ConfirmationModal from "../../common/ConfirmationModal";
 import { setCourse, setStep } from "../../../Redux/slices/courseSlice";
+import Loader1 from "../../Loaders/Loader1";
 
 const Sidebar = () => {
   const { user, loading: profileLoading } = useSelector(
@@ -20,7 +21,7 @@ const Sidebar = () => {
   const [confirmationModal, setConfirmationModal] = useState(null);
 
   if (profileLoading || authLoading) {
-    return <div className="mt-10">Loading...</div>;
+    return <div className="mt-10"><Loader1/></div>;
   }
 
   return (

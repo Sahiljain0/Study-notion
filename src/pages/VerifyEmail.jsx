@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../services/operations/authAPI";
 import {sendOtp} from "../services/operations/authAPI";
 import { useSelector } from "react-redux";
+import Loader1 from "../components/Loaders/Loader1";
 const VerifyEmail = () => {
 
     const { signupData, loading } = useSelector((state) => state.auth);
@@ -57,7 +58,7 @@ const VerifyEmail = () => {
   return (
     <div className="min-h-[calc(100vh-3.5rem)] grid place-items-center">
       {loading ? (
-        <div>Loading...</div>
+        <div><Loader1/></div>
       ) : (
         <div className="max-w-[500px] p-4 lg:p-8">
           <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">

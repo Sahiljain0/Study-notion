@@ -164,3 +164,35 @@ html, body {
 @keyframes s6 { 
   100%{transform: rotate(1turn)}
 }
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes swipe-indicator {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+}
+
+.animate-swipe-indicator {
+  animation: swipe-indicator 1.5s forwards;
+}

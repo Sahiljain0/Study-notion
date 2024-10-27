@@ -18,6 +18,7 @@ import { purchaseWithWallet } from "../services/operations/profileAPI";
 import GetAvgRating from "../utils/avgRating";
 import Error from "./Error";
 import {addToCart, removeFromCart} from "../Redux/slices/cartSlice";
+import Loader1 from "../components/Loaders/Loader1";
 
 function CourseDetails() {
   const { user } = useSelector((state) => state.profile);
@@ -73,7 +74,7 @@ function CourseDetails() {
   if (loading || !response) {
     return (
       <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-        <div className="spinner"></div>
+        <div ><Loader1/></div>
       </div>
     );
   }

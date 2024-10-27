@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi"
 import { resetPassword } from "../services/operations/authAPI";
+import Loader1 from "../components/Loaders/Loader1";
 const UpdatePassword = () => {
 
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const UpdatePassword = () => {
   return (
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
       {loading ? (
-        <div>Loading...</div>
+        <div><Loader1/></div>
       ) : (
         <div className="max-w-[500px] p-4 lg:p-8">
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">

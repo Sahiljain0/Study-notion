@@ -9,7 +9,7 @@ function Dashboard() {
   if (authLoading || profileLoading) {
     return (
       <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-        <div>Loading...</div>
+        <div><Loader1/></div>
       </div>
     );
   }
