@@ -1,4 +1,3 @@
-
 const otpTemplate = (otp) => {
 	return `<!DOCTYPE html>
 	<html>
@@ -67,7 +66,7 @@ const otpTemplate = (otp) => {
 	
 	<body>
 		<div class="container">
-			<a href="https://study-notion-woad-six.vercel.app/"><img class="logo"
+			<a href="https://study-notion-woad-six.vercel.app"><img class="logo"
 					src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo"></a>
 			<div class="message">OTP Verification Email</div>
 			<div class="body">

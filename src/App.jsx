@@ -29,14 +29,15 @@ import CourseDetails from "./pages/CourseDetails";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import ViewCourse from "./pages/ViewCourse";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   const { user } = useSelector((state) => state.profile)
   
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
       <NavBar />
+      <ScrollToTop />
       <Toaster />
-      
       <audio id="notificationSound" src="/sound.mp3" preload="auto" />
       <Routes>
         <Route path="/" element={<Home />}></Route>
