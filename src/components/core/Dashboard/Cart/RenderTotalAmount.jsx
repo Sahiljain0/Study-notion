@@ -30,9 +30,7 @@ const RenderTotalAmount = () => {
        
         
       };
-      console.log("token yaha pr h ji : ", token);
       const courses = cart.map(course => ({ id: course._id, price: course.price })); // Create an array of course objects
-      console.log("Token is her ", token); // Debugging - Check if token object is structured correctly
 
       try {
         dispatch(buyCourses(token, courses, navigate));
@@ -42,11 +40,9 @@ const RenderTotalAmount = () => {
 
 
       } catch (error) {
-        console.error("Error processing payment:", error);
         toast.error("Payment failed. Please try again.");
       }
     } else {
-      console.error("User information is missing.");
       toast.error("User information is missing. Please log in again.");
     }
   };

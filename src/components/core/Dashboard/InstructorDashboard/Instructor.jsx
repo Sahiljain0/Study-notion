@@ -17,9 +17,7 @@ export default function Instructor() {
     (async () => {
       setLoading(true);
       const instructorApiData = await getInstructorData(token);
-      console.log("instructor data : ", instructorApiData);
       const result = await fetchInstructorCourses(token);
-      console.log("resut is : ", result);
       if (instructorApiData.length) setInstructorData(instructorApiData);
       if (result) {
         setCourses(result);
@@ -37,7 +35,6 @@ export default function Instructor() {
     (acc, curr) => acc + curr.totalStudentsEnrolled,
     0
   );
-  console.log("Total stuents : ", totalStudents);
 
   return (
     <div className="flex flex-col w-full ">

@@ -11,7 +11,6 @@ import Loader1 from "../components/Loaders/Loader1";
 const VerifyEmail = () => {
 
     const { signupData, loading } = useSelector((state) => state.auth);
-    console.log("signup data : ", signupData);
     const [otp, setOtp] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
