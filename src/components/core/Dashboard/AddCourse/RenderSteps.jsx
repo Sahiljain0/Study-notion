@@ -23,7 +23,7 @@ export default function RenderSteps () {
   ];
   return (
     <>
-      <div className="relative mb-2 flex w-full justify-center">
+      <div className="relative mb-2 px-6 md:px-0 flex w-full justify-center">
         {steps.map((item) => (
           <>
             <div className="flex flex-col items-center " key={item.id}>
@@ -54,7 +54,7 @@ export default function RenderSteps () {
           </>
         ))}
       </div>
-      <div className="relative mb-16 flex w-full select-none justify-between">
+      <div className="relative mb-16 px-2 md:px-0 flex w-full select-none justify-between">
         {steps.map((item) => (
           <>
             <div

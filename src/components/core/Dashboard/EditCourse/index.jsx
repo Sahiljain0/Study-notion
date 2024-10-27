@@ -8,6 +8,7 @@ import {
 } from "../../../../services/operations/courseDetailsAPI"
 import { setCourse, setEditCourse } from "../../../../Redux/slices/courseSlice"
 import RenderSteps from "../AddCourse/RenderSteps"
+import Loader1 from "../../../Loaders/Loader1"
 
 export default function EditCourse() {
   const dispatch = useDispatch()
@@ -32,7 +33,7 @@ export default function EditCourse() {
   if (loading) {
     return (
       <div className="grid flex-1 place-items-center">
-        <div className="spinner"></div>
+        <div><Loader1/></div>
       </div>
     )
   }
