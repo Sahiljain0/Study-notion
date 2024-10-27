@@ -192,4 +192,4 @@ Contributions are welcome If you have any suggestions or find any issues, please
 - Website: [Sahil jain](https://tricrafters.in/)
 
 
-## Thank you for visiting study notion .
+## Thank you for visiting study notion 
