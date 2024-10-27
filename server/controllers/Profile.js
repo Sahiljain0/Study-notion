@@ -52,7 +52,7 @@ exports.updateProfile = async (req, res) => {
       updatedUserDetails,
     })
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     return res.status(500).json({
       success: false,
       error: error.message,
@@ -63,7 +63,7 @@ exports.updateProfile = async (req, res) => {
 exports.deleteAccount = async (req, res) => {
   try {
     const id = req.user.id
-    console.log(id)
+    // console.log(id)
     const user = await User.findById({ _id: id })
     if (!user) {
       return res.status(404).json({
@@ -90,7 +90,7 @@ exports.deleteAccount = async (req, res) => {
     })
     await CourseProgress.deleteMany({ userId: id })
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     res
       .status(500)
       .json({ success: false, message: "User Cannot be deleted successfully" })
@@ -127,7 +127,7 @@ exports.updateDisplayPicture = async (req, res) => {
       1000,
       1000
     )
-    console.log(image)
+    // console.log(image)
     const updatedProfile = await User.findByIdAndUpdate(
       { _id: userId },
       { image: image.secure_url },
@@ -220,7 +220,7 @@ exports.getAllUserDetails = async (req, res) => {
       .populate("additionalDetails")
       .exec();
 
-    console.log(userDetails);
+    // console.log(userDetails);
     
     // Check if userDetails is found
     if (!userDetails) {
@@ -278,7 +278,7 @@ exports.instructorDashboard = async (req, res) => {
 
     res.status(200).json({ courses: courseData })
   } catch (error) {
-    console.error(error)
+    // console.error(error)
     res.status(500).json({ message: "Server Error h" })
   }
 }
@@ -293,7 +293,7 @@ exports.purchaseWithWallet = async (req, res) => {
     const { userId, purchaseAmount, courseId } = req.body;
 
     // Logging request body to confirm all fields are received correctly
-    console.log("Request Body:", req.body);
+    // console.log("Request Body:", req.body);
 
     // Check if required fields are provided
     if (!userId || !purchaseAmount || !courseId) {
@@ -365,7 +365,7 @@ exports.purchaseWithWallet = async (req, res) => {
       updatedWalletBalance: updatedUser.wallet
     });
   } catch (error) {
-    console.error("Error processing wallet purchase:", error);
+    // console.error("Error processing wallet purchase:", error);
     return res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
@@ -375,10 +375,10 @@ exports.buyCourse = async (req, res) => {
     const { userId, purchaseAmount, courseIds } = req.body;
 
     // Logging request body to confirm all fields are received correctly
-    console.log("Request Body:", req.body);
-    console.log("user id : ", userId);
-    console.log("purchase amount : ", purchaseAmount);
-  console.log("course ids : ", courseIds);
+    // console.log("Request Body:", req.body);
+    // console.log("user id : ", userId);
+    // console.log("purchase amount : ", purchaseAmount);
+  // console.log("course ids : ", courseIds);
     // Check if required fields are provided
     if (!userId || !purchaseAmount || !courseIds || !Array.isArray(courseIds)) {
       return res.status(400).json({ success: false, message: "yaha h error bhai" });
@@ -454,7 +454,7 @@ exports.buyCourse = async (req, res) => {
       updatedWalletBalance: updatedUser.wallet
     });
   } catch (error) {
-    console.error("Error processing wallet purchase for multiple courses:", error);
+    // console.error("Error processing wallet purchase for multiple courses:", error);
     return res.status(500).json({ success: false, message: "Internal server error" });
   }
 };

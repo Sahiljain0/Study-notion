@@ -7,7 +7,7 @@ const crypto = require("crypto");
 exports.resetPasswordToken = async (req, res) => {
 	try {
 		const email = req.body.email;
-        console.log("email is : ", email);
+        // console.log("email is : ", email);
 		const user = await User.findOne({ email: email });
 		if (!user) {
 			return res.json({
@@ -25,9 +25,9 @@ exports.resetPasswordToken = async (req, res) => {
 			},
 			{ new: true }
 		);
-		console.log("DETAILS", updatedDetails);
+		// console.log("DETAILS", updatedDetails);
 
-		const url = `http://localhost:3000/update-password/${token}`;
+		const url = `https://study-notion-woad-six.vercel.app/update-password/${token}`;
 
 		await mailSender(
 			email,

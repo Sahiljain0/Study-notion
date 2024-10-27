@@ -9,8 +9,8 @@ exports.updateCourseProgress = async (req, res) => {
   const userId = req.user.id
  
   try {
-    console.log("sub section id ", subsectionId);
-    console.log("here course id ", courseId);
+    // console.log("sub section id ", subsectionId);
+    // console.log("here course id ", courseId);
     // Check if the subsection is valid
     const subsection = await SubSection.findById(subsectionId)
     if (!subsection) {
@@ -44,7 +44,7 @@ exports.updateCourseProgress = async (req, res) => {
 
     return res.status(200).json({ message: "Course progress updated" })
   } catch (error) {
-    console.error(error)
+    // console.error(error)
     return res.status(500).json({ error: "Internal server error" })
   }
 }
