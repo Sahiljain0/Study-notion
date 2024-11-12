@@ -49,19 +49,6 @@ StudyNotion is a fully functional EdTech platform that enables users to create, 
 
 
 
-![Screenshot 2](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/vo7qhsyvm35cxcj4kwhy.png)
-
-
-
-![Screenshot 3](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/tjjenae2yrpuqofofxnx.png)
-
-
-
-![Screenshot 4](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/yjkcvt3ccjtm8s8lqoon.png)
-
-
-
-
 ## Table of Contents
 
 - Introduction
@@ -80,6 +67,9 @@ StudyNotion is a fully functional EdTech platform that enables users to create, 
 
 StudyNotion aims to provide a seamless and interactive learning experience for students, making education more accessible and engaging. Additionally, the platform serves as a platform for instructors to showcase their expertise and connect with learners across the globe.
 
+
+![Screenshot 4](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/yjkcvt3ccjtm8s8lqoon.png)
+
 ## System Architecture
 
 The StudyNotion EdTech platform consists of three main components: the front-end, the back-end, and the database. The platform follows a client-server architecture, with the front-end serving as the client and the back-end and database serving as the server.
@@ -87,6 +77,10 @@ The StudyNotion EdTech platform consists of three main components: the front-end
 ### Front-end
 
 The front end of StudyNotion has all the necessary pages that an ed-tech platform should have. Some of these pages are:
+
+
+![Screenshot 3](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/tjjenae2yrpuqofofxnx.png)
+
 
 #### For Students:
 
@@ -125,6 +119,8 @@ The back end of StudyNotion provides a range of features and functionalities, in
 ### API Design
 
 The StudyNotion platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE.
+
+![Screenshot 2](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/vo7qhsyvm35cxcj4kwhy.png)
 
 ## Configuration
 
