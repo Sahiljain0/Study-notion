@@ -4,6 +4,8 @@ website : [Link to website][(https://study-notion-woad-six.vercel.app/)]
 
 
 ![Main Page](images/mainpage.png).
+
+
 StudyNotion is a fully functional EdTech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
 
 ![Database Schema](images/schema.png)
@@ -42,6 +44,15 @@ Access the application in your browser at `http://localhost:3000`.
 
 
 StudyNotion is a fully functional EdTech platform that enables users to create, consume, and rate educational content. The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.
+# Screenshots
+![Screenshot 1](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/akpxxgscqphgjh6irasj.png)
+
+![Screenshot 2](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/vo7qhsyvm35cxcj4kwhy.png)
+
+![Screenshot 3](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/tjjenae2yrpuqofofxnx.png)
+
+![Screenshot 4](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/yjkcvt3ccjtm8s8lqoon.png)
+
 
 ## Table of Contents
 
