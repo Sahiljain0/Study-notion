@@ -47,11 +47,19 @@ StudyNotion is a fully functional EdTech platform that enables users to create, 
 # Screenshots
 ![Screenshot 1](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/akpxxgscqphgjh6irasj.png)
 
+
+
 ![Screenshot 2](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/vo7qhsyvm35cxcj4kwhy.png)
+
+
 
 ![Screenshot 3](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/tjjenae2yrpuqofofxnx.png)
 
+
+
 ![Screenshot 4](https://res.cloudinary.com/dxzniberu/image/upload/v1731425665/Code/yjkcvt3ccjtm8s8lqoon.png)
+
+
 
 
 ## Table of Contents
