@@ -1,6 +1,6 @@
 
 # StudyNotion - EdTech Platform
-:rocket: [Link to website][] 
+website : [Link to website][(https://study-notion-woad-six.vercel.app/)] 
 
 
 ![Main Page](images/mainpage.png).
@@ -190,6 +190,7 @@ Contributions are welcome If you have any suggestions or find any issues, please
 - Email: [jainsahil760@gmail.com](mailto:jainsahil760@gmail.com)
 - LinkedIn: [https://www.linkedin.com/in/sahil-jain-28433022a](https://www.linkedin.com/in/sahil-jain-28433022a)
 - Website: [Sahil jain](https://tricrafters.in/)
+-Portfolio : [sahil jain](https://www.jainsahil.me/)
 
 
 ## Thank you for visiting study notion 
