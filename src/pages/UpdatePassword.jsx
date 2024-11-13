@@ -157,7 +157,7 @@ const UpdatePassword = () => {
   return (
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
       {loading ? (
-        <div class="custom-loader"></div>
+        <div class="spinner"></div>
       ) : (
         <div className="max-w-[500px] p-4 lg:p-8 ">
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
