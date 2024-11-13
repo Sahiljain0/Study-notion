@@ -44,7 +44,7 @@ const ForgotPassword = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter email address"
-                  className="form-style w-full py-1"
+                  className="form-style w-full py-2"
                 />
               </label>
             )}
