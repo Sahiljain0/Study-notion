@@ -72,7 +72,7 @@ const Footer = () => {
                   <FaEnvelope className="hover:text-richblack-200" />
                 </a>
                 <a
-                  href="https://tricrafters.in/"
+                  href="https://www.jainsahil.me/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Portfolio"
