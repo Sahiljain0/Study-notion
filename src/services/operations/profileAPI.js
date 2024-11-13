@@ -148,8 +148,79 @@ export function purchaseWithWallet(token, purchaseAmount, courseId, navigate) {
   };
 }
 
+// export function buyCourses(token, courses, navigate) {
+//   return async (dispatch) => {
+//     const toastId = toast.loading("Processing purchase...");
+//     dispatch(setLoading(true));
+
+//     if (!token || !courses || courses.length === 0) {
+//       toast.error("Missing required fields here");
+//       dispatch(setLoading(false));
+//       toast.dismiss(toastId);
+//       return;
+//     }
+
+//     try {
+//       const purchaseAmount = courses.reduce(
+//         (total, course) => total + course.price,
+//         0
+//       );
+//       const courseIds = courses.map((course) => course.id);
+//       const response = await apiConnector(
+//         "POST",
+//         BUY_COURSES,
+//         {
+//           userId: token.userId,
+//           purchaseAmount,
+//           courseIds,
+//         },
+//         {
+//           Authorization: `Bearer ${token.accessToken}`,
+//         }
+//       );
+
+
+//       if (!response.data.success) {
+//         throw new Error(response.data.message);
+//       }
+
+//       const updatedWalletBalance = response.data.updatedWalletBalance;
+//       dispatch(updateUserWallet(updatedWalletBalance));
+
+//       const notificationSound = document.getElementById("notificationSound");
+//       notificationSound.play();
+
+//       dispatch(resetCart());
+//       toast.success("Purchase successful!");
+//        // Fire confetti
+//     confetti({
+//       particleCount: 100, // Number of confetti particles
+//       spread: 70, // Spread angle
+//       origin: { y: 0.6 }, // Starting position for confetti
+//     });
+//       navigate("/dashboard/enrolled-courses");
+//     } catch (error) {
+//       toast.dismiss(toastId);
+//       if (
+//         error.response &&
+//         error.response.data &&
+//         error.response.data.message
+//       ) {
+//         const errorMessage = error.response.data.message;
+//         toast.error(errorMessage);
+//       } else {
+//         toast.error("An unexpected error occurred. Please try again later.");
+//       }
+//     } finally {
+//       dispatch(setLoading(false));
+//       toast.dismiss(toastId);
+//     }
+//   };
+// }
+
 export function buyCourses(token, courses, navigate) {
   return async (dispatch) => {
+    console.log("here it is ...");
     const toastId = toast.loading("Processing purchase...");
     dispatch(setLoading(true));
 
@@ -166,6 +237,8 @@ export function buyCourses(token, courses, navigate) {
         0
       );
       const courseIds = courses.map((course) => course.id);
+      console.log("courseid is : ", courseIds);
+      console.log("token is : ", token.userId);
       const response = await apiConnector(
         "POST",
         BUY_COURSES,
@@ -179,6 +252,7 @@ export function buyCourses(token, courses, navigate) {
         }
       );
 
+      console.log("PURCHASE_WITH_WALLET API RESPONSE:", response.data);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -200,6 +274,7 @@ export function buyCourses(token, courses, navigate) {
     });
       navigate("/dashboard/enrolled-courses");
     } catch (error) {
+      console.error("Error during purchase:", error);
       toast.dismiss(toastId);
       if (
         error.response &&
@@ -217,6 +292,8 @@ export function buyCourses(token, courses, navigate) {
     }
   };
 }
+
+
 
 
 export async function getInstructorData(token) {

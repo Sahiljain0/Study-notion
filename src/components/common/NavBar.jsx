@@ -154,7 +154,7 @@ function Navbar() {
             </>
           )}
 
-          {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+          {/* {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
               <AiOutlineShoppingCart className="text-2xl  text-richblack-100" />
               {totalItems > 0 && (
@@ -163,7 +163,7 @@ function Navbar() {
                 </span>
               )}
             </Link>
-          )}
+          )} */}
           {token === null && (
             <Link to="/login">
               <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[14px] py-[5px] text-richblack-100">
@@ -202,7 +202,7 @@ function Navbar() {
               />
             </>
           )}
-          <div>
+          {/* <div>
             {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
               <Link to="/dashboard/cart" className="relative">
                 <AiOutlineShoppingCart className="text-3xl  text-richblack-100" />
@@ -213,7 +213,7 @@ function Navbar() {
                 )}
               </Link>
             )}
-          </div>
+          </div> */}
           <button>
             {token === null ? (
               <AiOutlineMenu
