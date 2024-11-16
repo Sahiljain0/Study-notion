@@ -27,6 +27,7 @@
     "copy-to-clipboard": "^3.3.3",
     "dotenv": "^16.4.5",
     "lucide-react": "^0.453.0",
+    "nodemailer": "^6.9.16",
     "react": "^18.3.1",
     "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.10.5",
